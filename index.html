@@ -9,9 +9,8 @@
 body{font-family:system-ui,sans-serif;background:#f7f7f5;min-height:100vh}
 button,input,textarea,select{font-family:inherit}
 .hidden{display:none!important}
-
 header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}
-.header-inner{max-width:960px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.header-inner{max-width:980px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:56px}
 .logo{display:flex;align-items:center;gap:8px}
 .logo img{width:36px;height:36px;object-fit:contain;border-radius:6px}
 .logo-text{font-weight:700;font-size:15px;color:#7b1a1a}
@@ -21,17 +20,14 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
 .header-right{display:flex;align-items:center;gap:10px}
 .avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;flex-shrink:0}
 .btn-logout{padding:6px 12px;border-radius:8px;border:1.5px solid #e8e8e8;background:#fff;color:#888;font-size:12px;font-weight:500;cursor:pointer}
-
-.container{max-width:960px;margin:0 auto;padding:20px 16px}
+.container{max-width:980px;margin:0 auto;padding:20px 16px}
 .tabs{display:inline-flex;background:#ebebeb;border-radius:10px;padding:3px;margin-bottom:24px;width:100%}
-.tab-btn{flex:1;padding:7px 10px;border-radius:8px;border:none;font-size:13px;font-weight:500;background:transparent;color:#888;cursor:pointer;transition:.15s}
+.tab-btn{flex:1;padding:7px 10px;border-radius:8px;border:none;font-size:12px;font-weight:500;background:transparent;color:#888;cursor:pointer;transition:.15s}
 .tab-btn.active{background:#fff;color:#1a1a1a;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
 .card{background:#fff;border-radius:14px;padding:16px 14px;border:1px solid #eee}
 .progress-track{height:4px;background:#f0f0f0;border-radius:4px;margin-top:10px}
 .progress-bar{height:100%;border-radius:4px;background:#1a1a1a}
-
 .table-card{background:#fff;border-radius:14px;border:1px solid #eee;overflow:hidden}
 .table-header{padding:14px 16px;border-bottom:1px solid #f3f3f3;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .row{padding:12px 16px;border-bottom:1px solid #f6f6f6;display:flex;align-items:center;gap:12px}
@@ -41,7 +37,6 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
 .row-title{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap}
 .row-sub{font-size:11px;color:#aaa}
 .empty{padding:36px;text-align:center;color:#bbb;font-size:13px}
-
 .badge{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap}
 .b-approved{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
 .b-pending{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
@@ -50,7 +45,6 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
 .b-personal,.b-comp,.b-dayoff{background:#eff6ff;color:#1e40af}
 .b-maternity{background:#f0fdf4;color:#166534}
 .b-special{background:#fffbeb;color:#92400e}
-
 .form-card{background:#fff;border-radius:16px;border:1px solid #eee;padding:20px 16px;max-width:540px}
 .form-card h2{margin:0 0 20px;font-size:15px;font-weight:600;color:#1a1a1a}
 .field-label{display:block;font-size:11px;font-weight:600;color:#999;margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px}
@@ -60,15 +54,21 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
 .btn-primary{width:100%;padding:13px;border-radius:11px;border:none;font-size:14px;font-weight:600;cursor:pointer;background:#1a1a1a;color:#fff}
 .btn-primary:disabled{background:#e8e8e8;color:#bbb;cursor:not-allowed}
 .success-msg{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;font-size:13px;color:#166534;font-weight:500;max-width:540px}
-
 .subtabs{display:inline-flex;background:#f3f3f3;border-radius:8px;padding:3px;flex-wrap:wrap;gap:2px}
 .subtab{padding:5px 12px;border-radius:6px;border:none;font-size:12px;font-weight:500;background:transparent;color:#888;cursor:pointer}
 .subtab.active{background:#fff;color:#1a1a1a;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 .search-input{padding:8px 12px;border:1.5px solid #e8e8e8;border-radius:8px;font-size:13px;outline:none;background:#fafafa;box-sizing:border-box}
 .btn-approve{padding:6px 12px;border-radius:8px;border:none;background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;cursor:pointer}
 .btn-reject-sm{padding:6px 12px;border-radius:8px;border:1.5px solid #fecaca;background:#fff;color:#991b1b;font-size:12px;font-weight:600;cursor:pointer}
+.btn-edit{padding:5px 10px;border-radius:8px;border:1.5px solid #e8e8e8;background:#fff;color:#555;font-size:12px;cursor:pointer}
+.btn-del{padding:5px 10px;border-radius:8px;border:1.5px solid #fecaca;background:#fff;color:#991b1b;font-size:12px;cursor:pointer}
 .dept-pill{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;border:1px solid}
-
+/* employee table */
+.emp-table{width:100%;border-collapse:collapse;font-size:13px}
+.emp-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.6px;border-bottom:1px solid #f3f3f3;background:#fafafa}
+.emp-table td{padding:12px 14px;border-bottom:1px solid #f6f6f6;color:#333;vertical-align:middle}
+.emp-table tr:last-child td{border-bottom:none}
+.emp-table tr:hover td{background:#fafafa}
 /* Login */
 #login-page{min-height:100vh;background:#f7f7f5;display:flex;align-items:center;justify-content:center;padding:24px}
 .login-wrap{width:100%;max-width:400px}
@@ -76,7 +76,7 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
 .login-logo img{width:100px;height:100px;object-fit:contain;margin:0 auto 12px;display:block}
 .login-logo h1{font-size:22px;font-weight:800;color:#7b1a1a;margin-bottom:4px}
 .login-logo p{font-size:13px;color:#999}
-.login-card{background:#fff;border-radius:20px;border:1px solid #eee;padding:28px 24px;box-shadow:0 4px 24px rgba(0,0,0,.06);margin-bottom:0}
+.login-card{background:#fff;border-radius:20px;border:1px solid #eee;padding:28px 24px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
 .login-card h2{margin:0 0 20px;font-size:16px;font-weight:600;color:#1a1a1a}
 .login-field{margin-bottom:14px}
 .pw-wrap{position:relative}
@@ -85,40 +85,29 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
 .error-msg{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#991b1b;display:flex;align-items:center;gap:8px}
 .btn-login{width:100%;padding:13px;border-radius:11px;border:none;background:#7b1a1a;color:#fff;font-size:14px;font-weight:600;cursor:pointer}
 .btn-login:disabled{background:#aaa;cursor:not-allowed}
-
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
-.modal{background:#fff;border-radius:16px;padding:24px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.modal h3{margin:0 0 8px;font-size:15px;font-weight:600}
-.modal p{margin:0 0 16px;font-size:13px;color:#777}
-.modal-actions{display:flex;gap:10px}
+.modal{background:#fff;border-radius:16px;padding:24px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto}
+.modal h3{margin:0 0 16px;font-size:15px;font-weight:600}
+.modal-actions{display:flex;gap:10px;margin-top:16px}
 .btn-cancel{flex:1;padding:10px;border-radius:10px;border:1.5px solid #e8e8e8;background:#fff;color:#555;font-size:13px;font-weight:500;cursor:pointer}
+.btn-confirm{flex:1;padding:10px;border-radius:10px;border:none;background:#1a1a1a;color:#fff;font-size:13px;font-weight:600;cursor:pointer}
 .btn-confirm-reject{flex:1;padding:10px;border-radius:10px;border:none;background:#991b1b;color:#fff;font-size:13px;font-weight:600;cursor:pointer}
-
-/* Loading overlay */
 #db-loading{position:fixed;inset:0;background:rgba(247,247,245,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:200;gap:12px}
 .spinner{width:36px;height:36px;border:3px solid #eee;border-top-color:#7b1a1a;border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 @media(max-width:480px){
-  .grid3{gap:8px}
-  .card{padding:12px 10px}
+  .grid3{gap:8px}.card{padding:12px 10px}
   .header-inner{padding:0 12px}
-  .logo-text{font-size:13px}
   .row{padding:10px 12px;gap:8px}
   .table-header{padding:12px 14px}
-  .admin-toolbar{flex-direction:column;align-items:stretch}
-  .search-input{width:100%}
-  .btn-approve,.btn-reject-sm{padding:5px 10px;font-size:11px}
+  .subtabs{flex-wrap:wrap}.search-input{width:100%}
+  .emp-table th,.emp-table td{padding:8px 10px;font-size:12px}
 }
 </style>
 </head>
 <body>
 
-<!-- DB Loading -->
-<div id="db-loading">
-  <div class="spinner"></div>
-  <p style="font-size:13px;color:#999">กำลังเชื่อมต่อฐานข้อมูล...</p>
-</div>
+<div id="db-loading"><div class="spinner"></div><p style="font-size:13px;color:#999">กำลังเชื่อมต่อฐานข้อมูล...</p></div>
 
 <!-- Login -->
 <div id="login-page" class="hidden">
@@ -130,17 +119,8 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
     </div>
     <div class="login-card">
       <h2>เข้าสู่ระบบ</h2>
-      <div class="login-field">
-        <label class="field-label">ชื่อผู้ใช้</label>
-        <input id="inp-user" class="field-input" placeholder="กรอกชื่อผู้ใช้" autocomplete="username">
-      </div>
-      <div class="login-field">
-        <label class="field-label">รหัสผ่าน</label>
-        <div class="pw-wrap">
-          <input id="inp-pw" class="field-input" type="password" placeholder="กรอกรหัสผ่าน">
-          <button class="pw-toggle" onclick="togglePw()">👁️</button>
-        </div>
-      </div>
+      <div class="login-field"><label class="field-label">ชื่อผู้ใช้</label><input id="inp-user" class="field-input" placeholder="กรอกชื่อผู้ใช้" autocomplete="username"></div>
+      <div class="login-field"><label class="field-label">รหัสผ่าน</label><div class="pw-wrap"><input id="inp-pw" class="field-input" type="password" placeholder="กรอกรหัสผ่าน"><button class="pw-toggle" onclick="togglePw()">👁️</button></div></div>
       <div id="login-error" class="error-msg hidden"><span>⚠️</span><span id="login-error-text"></span></div>
       <button id="btn-login" class="btn-login" onclick="doLogin()">เข้าสู่ระบบ →</button>
     </div>
@@ -159,17 +139,14 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
       <div class="header-right">
         <div style="display:flex;align-items:center;gap:8px">
           <div id="hdr-avatar" class="avatar"></div>
-          <div id="hdr-info">
-            <div id="hdr-name" style="font-size:13px;color:#1a1a1a;font-weight:600"></div>
-            <div id="hdr-dept" style="font-size:11px;color:#aaa"></div>
-          </div>
+          <div><div id="hdr-name" style="font-size:13px;color:#1a1a1a;font-weight:600"></div><div id="hdr-dept" style="font-size:11px;color:#aaa"></div></div>
         </div>
         <button class="btn-logout" onclick="doLogout()">ออกจากระบบ</button>
       </div>
     </div>
   </header>
 
-  <!-- Employee -->
+  <!-- Employee View -->
   <div id="view-employee" class="container hidden">
     <div class="tabs">
       <button class="tab-btn active" onclick="empTab('dashboard',this)">📊 ภาพรวม</button>
@@ -195,6 +172,10 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
           <div><label class="field-label" id="label-from">วันที่เริ่มต้น</label><input type="date" id="f-from" class="field-input"></div>
           <div id="f-to-wrap"><label class="field-label">วันที่สิ้นสุด</label><input type="date" id="f-to" class="field-input"></div>
         </div>
+        <div id="dayoff-extra" class="hidden" style="margin-bottom:16px">
+          <label class="field-label">วันที่ขอหยุด</label>
+          <input type="date" id="f-dayoff" class="field-input">
+        </div>
         <div id="comp-extra" class="hidden" style="margin-bottom:16px">
           <label class="field-label">เลือกปี</label>
           <div style="display:flex;gap:10px;margin-bottom:12px">
@@ -202,48 +183,36 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
             <button id="btn-year-69" onclick="selectHolidayYear(2569,this)" style="flex:1;padding:9px;border-radius:10px;border:1.5px solid #e8e8e8;background:#fff;color:#555;font-size:13px;font-weight:600;cursor:pointer">ปี 2569</button>
           </div>
           <label class="field-label">วันหยุดนักขัตฤกษ์</label>
-          <select id="f-comp-holiday" class="field-input" onchange="updateSubmitBtn()">
-            <option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option>
-          </select>
-        </div>
-        <div id="dayoff-extra" class="hidden" style="margin-bottom:16px">
-          <label class="field-label">วันที่ขอหยุด</label>
-          <input type="date" id="f-dayoff" class="field-input">
+          <select id="f-comp-holiday" class="field-input" onchange="updateSubmitBtn()"><option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option></select>
         </div>
         <div style="margin-bottom:16px">
           <label class="field-label">ช่วงเวลา</label>
           <div style="display:flex;gap:10px">
-            <button class="type-btn active" id="period-full" onclick="setPeriod('full',this)" style="flex:1;padding:10px 8px;border-radius:12px;border:1.5px solid #1a1a1a;background:#1a1a1a;cursor:pointer;text-align:center">
-              <div style="font-size:18px;margin-bottom:2px">📅</div>
-              <div class="period-label" style="font-size:12px;font-weight:500;color:#fff">เต็มวัน</div>
+            <button id="period-full" onclick="setPeriod('full',this)" style="flex:1;padding:10px 8px;border-radius:12px;border:1.5px solid #1a1a1a;background:#1a1a1a;cursor:pointer;text-align:center">
+              <div style="font-size:18px;margin-bottom:2px">📅</div><div class="period-label" style="font-size:12px;font-weight:500;color:#fff">เต็มวัน</div>
             </button>
-            <button class="type-btn" id="period-am" onclick="setPeriod('am',this)" style="flex:1;padding:10px 8px;border-radius:12px;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;text-align:center">
-              <div style="font-size:18px;margin-bottom:2px">🌅</div>
-              <div class="period-label" style="font-size:12px;font-weight:500;color:#555">ครึ่งวันเช้า</div>
+            <button id="period-am" onclick="setPeriod('am',this)" style="flex:1;padding:10px 8px;border-radius:12px;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;text-align:center">
+              <div style="font-size:18px;margin-bottom:2px">🌅</div><div class="period-label" style="font-size:12px;font-weight:500;color:#555">ครึ่งวันเช้า</div>
               <div class="period-sub" style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
             </button>
-            <button class="type-btn" id="period-pm" onclick="setPeriod('pm',this)" style="flex:1;padding:10px 8px;border-radius:12px;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;text-align:center">
-              <div style="font-size:18px;margin-bottom:2px">🌇</div>
-              <div class="period-label" style="font-size:12px;font-weight:500;color:#555">ครึ่งวันบ่าย</div>
+            <button id="period-pm" onclick="setPeriod('pm',this)" style="flex:1;padding:10px 8px;border-radius:12px;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;text-align:center">
+              <div style="font-size:18px;margin-bottom:2px">🌇</div><div class="period-label" style="font-size:12px;font-weight:500;color:#555">ครึ่งวันบ่าย</div>
               <div class="period-sub" style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
             </button>
           </div>
         </div>
-        <div style="margin-bottom:20px">
-          <label class="field-label">หมายเหตุ (ถ้ามี)</label>
-          <textarea id="f-note" class="field-input" rows="3" placeholder="ระบุเหตุผลหรือรายละเอียด..." style="resize:none"></textarea>
-        </div>
+        <div style="margin-bottom:20px"><label class="field-label">หมายเหตุ (ถ้ามี)</label><textarea id="f-note" class="field-input" rows="3" placeholder="ระบุเหตุผลหรือรายละเอียด..." style="resize:none"></textarea></div>
         <button id="btn-submit-leave" class="btn-primary" onclick="submitLeave()">ส่งคำขอลา →</button>
       </div>
       <p style="font-size:11px;color:#bbb;text-align:center;margin-top:12px;max-width:540px">คำขอจะถูกส่งให้หัวหน้าฝ่ายของคุณพิจารณาทันที</p>
     </div>
   </div>
 
-  <!-- Manager -->
+  <!-- Manager View -->
   <div id="view-manager" class="container hidden">
     <div class="grid3" id="mgr-stats"></div>
     <div class="table-card">
-      <div class="table-header admin-toolbar">
+      <div class="table-header" style="flex-wrap:wrap;gap:10px">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <span style="font-weight:600;font-size:14px;color:#1a1a1a" id="mgr-title"></span>
           <div class="subtabs">
@@ -259,129 +228,180 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
     </div>
   </div>
 
-  <!-- Admin -->
+  <!-- Admin View -->
   <div id="view-admin" class="container hidden">
-    <div class="grid3" id="admin-stats"></div>
-    <div class="table-card">
-      <div class="table-header admin-toolbar">
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-          <span style="font-weight:600;font-size:14px;color:#1a1a1a">คำขอลาทั้งหมด (ทุกฝ่าย)</span>
-          <div class="subtabs">
-            <button class="subtab active" onclick="adminTab('pending',this)">รออนุมัติ</button>
-            <button class="subtab" onclick="adminTab('approved',this)">อนุมัติแล้ว</button>
-            <button class="subtab" onclick="adminTab('rejected',this)">ไม่อนุมัติ</button>
-            <button class="subtab" onclick="adminTab('all',this)">ทั้งหมด</button>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="adminTab('leaves',this)">📋 คำขอลา</button>
+      <button class="tab-btn" onclick="adminTab('employees',this)">👥 จัดการพนักงาน</button>
+    </div>
+
+    <!-- คำขอลา -->
+    <div id="admin-leaves">
+      <div class="grid3" id="admin-stats"></div>
+      <div class="table-card">
+        <div class="table-header" style="flex-wrap:wrap;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span style="font-weight:600;font-size:14px;color:#1a1a1a">คำขอลาทั้งหมด</span>
+            <div class="subtabs">
+              <button class="subtab active" onclick="leaveTab('pending',this)">รออนุมัติ</button>
+              <button class="subtab" onclick="leaveTab('approved',this)">อนุมัติแล้ว</button>
+              <button class="subtab" onclick="leaveTab('rejected',this)">ไม่อนุมัติ</button>
+              <button class="subtab" onclick="leaveTab('all',this)">ทั้งหมด</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input class="search-input" id="admin-search" placeholder="🔍 ค้นหา..." oninput="renderLeaves()">
+            <button onclick="exportExcel()" style="padding:8px 12px;border-radius:8px;border:1.5px solid #d1fae5;background:#f0fdf4;color:#166534;font-size:12px;font-weight:600;cursor:pointer">⬇️ Excel</button>
+            <button onclick="exportTigerSoft()" style="padding:8px 12px;border-radius:8px;border:1.5px solid #ddd6fe;background:#f5f3ff;color:#5b21b6;font-size:12px;font-weight:600;cursor:pointer">🐯 TigerSoft</button>
           </div>
         </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <input class="search-input" id="admin-search" placeholder="🔍 ค้นหา..." oninput="renderAdmin()">
-          <button onclick="exportExcel()" style="padding:8px 12px;border-radius:8px;border:1.5px solid #d1fae5;background:#f0fdf4;color:#166534;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">⬇️ Excel</button>
-          <button onclick="exportTigerSoft()" style="padding:8px 12px;border-radius:8px;border:1.5px solid #ddd6fe;background:#f5f3ff;color:#5b21b6;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">🐯 TigerSoft</button>
+        <div id="admin-list"></div>
+      </div>
+    </div>
+
+    <!-- จัดการพนักงาน -->
+    <div id="admin-employees" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+        <input class="search-input" id="emp-search" placeholder="🔍 ค้นหาพนักงาน..." oninput="renderEmpTable()" style="width:220px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="downloadTemplate()" style="padding:9px 14px;border-radius:10px;border:1.5px solid #d1fae5;background:#f0fdf4;color:#166534;font-size:13px;font-weight:600;cursor:pointer">⬇️ Template</button>
+          <label style="padding:9px 14px;border-radius:10px;border:1.5px solid #ddd6fe;background:#f5f3ff;color:#5b21b6;font-size:13px;font-weight:600;cursor:pointer">
+            📥 Import Excel<input type="file" id="import-file" accept=".xlsx,.xls,.csv" style="display:none" onchange="importExcel(event)">
+          </label>
+          <button onclick="openEmpModal(null)" style="padding:9px 14px;border-radius:10px;border:none;background:#1a1a1a;color:#fff;font-size:13px;font-weight:600;cursor:pointer">+ เพิ่มพนักงาน</button>
         </div>
       </div>
-      <div id="admin-list"></div>
+      <!-- Import Preview -->
+      <div id="import-preview" class="hidden" style="margin-bottom:16px;background:#fff;border-radius:14px;border:1px solid #eee;overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid #f3f3f3;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:600;font-size:14px;color:#1a1a1a">ตรวจสอบข้อมูลก่อน Import</span>
+          <div style="display:flex;gap:8px">
+            <button onclick="cancelImport()" class="btn-cancel" style="padding:7px 14px">ยกเลิก</button>
+            <button onclick="confirmImport()" class="btn-confirm" style="padding:7px 14px">นำเข้าทั้งหมด</button>
+          </div>
+        </div>
+        <div id="import-summary" style="padding:10px 16px;font-size:12px;color:#666;background:#fffbeb;border-bottom:1px solid #fde68a"></div>
+        <div style="overflow-x:auto"><table class="emp-table"><thead><tr><th>#</th><th>ชื่อ-นามสกุล</th><th>Username</th><th>รหัสผ่าน</th><th>ตำแหน่ง</th><th>ฝ่าย</th><th>Role</th><th>สถานะ</th></tr></thead><tbody id="import-tbody"></tbody></table></div>
+      </div>
+      <div class="table-card">
+        <div style="overflow-x:auto">
+          <table class="emp-table">
+            <thead>
+              <tr>
+                <th>ชื่อ-นามสกุล</th>
+                <th>Username</th>
+                <th>ตำแหน่ง</th>
+                <th>ฝ่าย</th>
+                <th>Role</th>
+                <th>จัดการ</th>
+              </tr>
+            </thead>
+            <tbody id="emp-tbody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Reject Modal -->
 <div id="reject-modal" class="modal-overlay hidden">
   <div class="modal">
     <h3>ยืนยันการปฏิเสธ</h3>
-    <p>กรุณาระบุเหตุผล (ถ้ามี)</p>
-    <textarea id="reject-note" class="field-input" rows="3" placeholder="เหตุผล..." style="resize:none;margin-bottom:16px"></textarea>
+    <p style="font-size:13px;color:#777;margin-bottom:12px">กรุณาระบุเหตุผล (ถ้ามี)</p>
+    <textarea id="reject-note" class="field-input" rows="3" placeholder="เหตุผล..." style="resize:none;margin-bottom:4px"></textarea>
     <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">ยกเลิก</button>
+      <button class="btn-cancel" onclick="closeModal('reject-modal')">ยกเลิก</button>
       <button class="btn-confirm-reject" onclick="confirmReject()">ยืนยันปฏิเสธ</button>
     </div>
   </div>
 </div>
 
-<!-- Firebase SDK -->
+<!-- Employee Modal -->
+<div id="emp-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <h3 id="emp-modal-title">เพิ่มพนักงาน</h3>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div><label class="field-label">ชื่อ-นามสกุล</label><input id="em-name" class="field-input" placeholder="ชื่อ นามสกุล"></div>
+      <div><label class="field-label">Username</label><input id="em-username" class="field-input" placeholder="username"></div>
+      <div><label class="field-label">รหัสผ่าน</label><input id="em-password" class="field-input" type="text" placeholder="password"></div>
+      <div><label class="field-label">ตำแหน่ง</label><input id="em-position" class="field-input" placeholder="เช่น แคชเชียร์, หัวหน้าฝ่าย"></div>
+      <div><label class="field-label">ฝ่าย</label>
+        <select id="em-dept" class="field-input">
+          <option value="it">ฝ่าย IT</option>
+          <option value="hr">ฝ่าย HR</option>
+          <option value="fin">ฝ่ายการเงิน</option>
+          <option value="ops">ฝ่ายปฏิบัติการ</option>
+          <option value="mkt">ฝ่ายการตลาด</option>
+          <option value="other">อื่นๆ</option>
+        </select>
+      </div>
+      <div><label class="field-label">Role</label>
+        <select id="em-role" class="field-input">
+          <option value="employee">พนักงาน (Employee)</option>
+          <option value="manager">หัวหน้าฝ่าย (Manager)</option>
+          <option value="admin">ผู้ดูแลระบบ (Admin)</option>
+        </select>
+      </div>
+      <div id="em-err" class="error-msg hidden"><span>⚠️</span><span id="em-err-text"></span></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('emp-modal')">ยกเลิก</button>
+      <button class="btn-confirm" onclick="saveEmployee()">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<!-- Quota Modal -->
+<div id="quota-modal" class="modal-overlay hidden">
+  <div class="modal" style="max-width:500px">
+    <h3 id="quota-modal-title">จัดการวันลา</h3>
+    <p id="quota-modal-name" style="font-size:13px;color:#777;margin-bottom:16px"></p>
+    <div id="quota-fields" style="display:flex;flex-direction:column;gap:10px"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('quota-modal')">ยกเลิก</button>
+      <button class="btn-confirm" onclick="saveQuota()">บันทึก</button>
+    </div>
+  </div>
+</div>
+<div id="del-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <h3>ยืนยันการลบ</h3>
+    <p style="font-size:13px;color:#777;margin:8px 0 16px">ต้องการลบพนักงาน <strong id="del-emp-name"></strong> ออกจากระบบ?<br>ข้อมูลประวัติการลาจะยังคงอยู่</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('del-modal')">ยกเลิก</button>
+      <button class="btn-confirm-reject" onclick="confirmDelete()">ลบพนักงาน</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-database-compat.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-// ══════════════════════════════════════════
-// 🔥 FIREBASE CONFIG — ใส่ค่าจาก Firebase Console
-// ══════════════════════════════════════════
+// ── Firebase ──────────────────────────────
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBAeKHuaeGtcEhH7qHfRZQfku4TTKfSqrw",
-  authDomain: "database-farm-hr.firebaseapp.com",
-  projectId: "database-farm-hr",
-  storageBucket: "database-farm-hr.firebasestorage.app",
-  messagingSenderId: "986153379003",
-  appId: "1:986153379003:web:d995aa6a65580b293df59e",
-  measurementId: "G-PG1YPC915P",
-  databaseURL: "https://database-farm-hr-default-rtdb.firebaseio.com",
-
+  apiKey:"AIzaSyBAeKHuaeGtcEhH7qHfRZQfku4TTKfSqrw",
+  authDomain:"database-farm-hr.firebaseapp.com",
+  projectId:"database-farm-hr",
+  storageBucket:"database-farm-hr.firebasestorage.app",
+  messagingSenderId:"986153379003",
+  appId:"1:986153379003:web:d995aa6a65580b293df59e",
+  measurementId:"G-PG1YPC915P",
+  databaseURL:"https://database-farm-hr-default-rtdb.firebaseio.com",
 };
-// ══════════════════════════════════════════
-
 firebase.initializeApp(FIREBASE_CONFIG);
 const db = firebase.database();
 
-// ── วันหยุดนักขัตฤกษ์ 2568 ───────────────
-const HOLIDAYS_2568 = [
-  {date:'2568-01-01', day:'พุธ',      name:'วันขึ้นปีใหม่'},
-  {date:'2568-02-12', day:'พุธ',      name:'วันมาฆบูชา'},
-  {date:'2568-04-06', day:'อาทิตย์',  name:'วันจักรี'},
-  {date:'2568-04-13', day:'อาทิตย์',  name:'วันสงกรานต์'},
-  {date:'2568-04-14', day:'จันทร์',   name:'วันสงกรานต์'},
-  {date:'2568-04-15', day:'อังคาร',   name:'วันสงกรานต์'},
-  {date:'2568-05-01', day:'พฤหัสบดี', name:'วันแรงงานแห่งชาติ'},
-  {date:'2568-05-04', day:'อาทิตย์',  name:'วันฉัตรมงคล'},
-  {date:'2568-05-11', day:'อาทิตย์',  name:'วันวิสาขบูชา'},
-  {date:'2568-06-02', day:'จันทร์',   name:'ตาม มติ ครม.'},
-  {date:'2568-06-03', day:'อังคาร',   name:'วันเฉลิมพระชนมพรรษาราชินี ร.10'},
-  {date:'2568-07-10', day:'พฤหัสบดี', name:'วันอาสาฬหบูชา'},
-  {date:'2568-07-28', day:'จันทร์',   name:'วันเฉลิมพระชนมพรรษา ร.10'},
-  {date:'2568-08-11', day:'จันทร์',   name:'ตาม มติ ครม.'},
-  {date:'2568-08-12', day:'อังคาร',   name:'วันแม่แห่งชาติ'},
-  {date:'2568-10-13', day:'จันทร์',   name:'วันนวมินทรมหาราช'},
-  {date:'2568-10-23', day:'พฤหัสบดี', name:'วันปิยมหาราช'},
-  {date:'2568-12-05', day:'ศุกร์',    name:'วันชาติและวันพ่อแห่งชาติ'},
-  {date:'2568-12-10', day:'พุธ',      name:'วันรัฐธรรมนูญ'},
-  {date:'2568-12-31', day:'พุธ',      name:'วันสิ้นปี'},
-];
-
-const HOLIDAYS_2569 = [
-  {date:'2569-01-01', day:'พฤหัสบดี', name:'วันขึ้นปีใหม่'},
-  {date:'2569-01-02', day:'ศุกร์',    name:'วันหยุดตามมติ ครม.'},
-  {date:'2569-03-03', day:'อังคาร',   name:'วันมาฆบูชา'},
-  {date:'2569-04-06', day:'จันทร์',   name:'วันจักรี'},
-  {date:'2569-04-13', day:'จันทร์',   name:'วันสงกรานต์'},
-  {date:'2569-04-14', day:'อังคาร',   name:'วันสงกรานต์'},
-  {date:'2569-04-15', day:'พุธ',      name:'วันสงกรานต์'},
-  {date:'2569-05-01', day:'ศุกร์',    name:'วันแรงงานแห่งชาติ'},
-  {date:'2569-05-04', day:'จันทร์',   name:'วันฉัตรมงคล'},
-  {date:'2569-05-31', day:'อาทิตย์',  name:'วันวิสาขบูชา'},
-  {date:'2569-06-03', day:'พุธ',      name:'วันเฉลิมพระชนมพรรษาราชินี'},
-  {date:'2569-07-28', day:'อังคาร',   name:'วันเฉลิมพระชนมพรรษา ร.10'},
-  {date:'2569-07-29', day:'พุธ',      name:'วันอาสาฬหบูชา'},
-  {date:'2569-08-12', day:'พุธ',      name:'วันแม่แห่งชาติ'},
-  {date:'2569-10-13', day:'อังคาร',   name:'วันนวมินทรมหาราช'},
-  {date:'2569-10-23', day:'ศุกร์',    name:'วันปิยมหาราช'},
-  {date:'2569-12-05', day:'เสาร์',    name:'วันชาติและวันพ่อแห่งชาติ'},
-  {date:'2569-12-10', day:'พฤหัสบดี', name:'วันรัฐธรรมนูญ'},
-  {date:'2569-12-31', day:'พฤหัสบดี', name:'วันสิ้นปี'},
-];
-
+// ── Static Data ───────────────────────────
 const DEPTS = {
-  it:  {label:'ฝ่าย IT',      color:'#1e40af',bg:'#eff6ff',border:'#bfdbfe'},
-  hr:  {label:'ฝ่าย HR',      color:'#166534',bg:'#f0fdf4',border:'#bbf7d0'},
-  fin: {label:'ฝ่ายการเงิน', color:'#92400e',bg:'#fffbeb',border:'#fde68a'},
+  it:   {label:'ฝ่าย IT',        color:'#1e40af',bg:'#eff6ff',border:'#bfdbfe'},
+  hr:   {label:'ฝ่าย HR',        color:'#166534',bg:'#f0fdf4',border:'#bbf7d0'},
+  fin:  {label:'ฝ่ายการเงิน',   color:'#92400e',bg:'#fffbeb',border:'#fde68a'},
+  ops:  {label:'ฝ่ายปฏิบัติการ',color:'#7e22ce',bg:'#fdf4ff',border:'#e9d5ff'},
+  mkt:  {label:'ฝ่ายการตลาด',   color:'#0f766e',bg:'#f0fdfa',border:'#99f6e4'},
+  other:{label:'อื่นๆ',          color:'#555',   bg:'#f5f5f5',border:'#e0e0e0'},
 };
-const USERS = [
-  {id:'u1',username:'emp_it1', password:'1234', name:'สมชาย ใจดี',      role:'employee',dept:'it', avatar:'ส',color:'#1a1a1a'},
-  {id:'u2',username:'emp_it2', password:'1234', name:'วิชัย ตั้งใจ',    role:'employee',dept:'it', avatar:'ว',color:'#1a1a1a'},
-  {id:'u3',username:'emp_hr1', password:'1234', name:'สมหญิง รักงาน',   role:'employee',dept:'hr', avatar:'ห',color:'#1a1a1a'},
-  {id:'u4',username:'emp_fin1',password:'1234', name:'มานี มีสุข',      role:'employee',dept:'fin',avatar:'ม',color:'#1a1a1a'},
-  {id:'u5',username:'mgr_it',  password:'1234', name:'ผู้จัดการ IT',    role:'manager', dept:'it', avatar:'จ',color:'#1e40af'},
-  {id:'u6',username:'mgr_hr',  password:'1234', name:'ผู้จัดการ HR',    role:'manager', dept:'hr', avatar:'จ',color:'#166534'},
-  {id:'u7',username:'mgr_fin', password:'1234', name:'ผู้จัดการการเงิน',role:'manager', dept:'fin',avatar:'จ',color:'#92400e'},
-  {id:'u8',username:'admin',   password:'admin',name:'ผู้ดูแลระบบ',     role:'admin',   dept:null, avatar:'ผ',color:'#4f46e5'},
-];
 const TYPES = [
   {id:'sick_cert',label:'ลาป่วย (มีใบรับรองแพทย์)',icon:'🏥',code:'SC'},
   {id:'personal', label:'ลากิจ',                    icon:'📋',code:'P'},
@@ -393,136 +413,177 @@ const TYPES = [
 ];
 const DEFAULT_QUOTA = {
   sick_cert:{used:0,total:30},personal:{used:0,total:3},
-  comp:{used:0,total:0},maternity:{used:0,total:90},
+  comp:{used:0,total:20},maternity:{used:0,total:90},
   special:{used:0,total:3},dayoff:{used:0,total:0},sick:{used:0,total:30},
 };
+const HOLIDAYS_2568=[
+  {date:'2568-01-01',day:'พุธ',      name:'วันขึ้นปีใหม่'},
+  {date:'2568-02-12',day:'พุธ',      name:'วันมาฆบูชา'},
+  {date:'2568-04-06',day:'อาทิตย์',  name:'วันจักรี'},
+  {date:'2568-04-13',day:'อาทิตย์',  name:'วันสงกรานต์'},
+  {date:'2568-04-14',day:'จันทร์',   name:'วันสงกรานต์'},
+  {date:'2568-04-15',day:'อังคาร',   name:'วันสงกรานต์'},
+  {date:'2568-05-01',day:'พฤหัสบดี', name:'วันแรงงานแห่งชาติ'},
+  {date:'2568-05-04',day:'อาทิตย์',  name:'วันฉัตรมงคล'},
+  {date:'2568-05-11',day:'อาทิตย์',  name:'วันวิสาขบูชา'},
+  {date:'2568-06-02',day:'จันทร์',   name:'ตาม มติ ครม.'},
+  {date:'2568-06-03',day:'อังคาร',   name:'วันเฉลิมพระชนมพรรษาราชินี ร.10'},
+  {date:'2568-07-10',day:'พฤหัสบดี', name:'วันอาสาฬหบูชา'},
+  {date:'2568-07-28',day:'จันทร์',   name:'วันเฉลิมพระชนมพรรษา ร.10'},
+  {date:'2568-08-11',day:'จันทร์',   name:'ตาม มติ ครม.'},
+  {date:'2568-08-12',day:'อังคาร',   name:'วันแม่แห่งชาติ'},
+  {date:'2568-10-13',day:'จันทร์',   name:'วันนวมินทรมหาราช'},
+  {date:'2568-10-23',day:'พฤหัสบดี', name:'วันปิยมหาราช'},
+  {date:'2568-12-05',day:'ศุกร์',    name:'วันชาติและวันพ่อแห่งชาติ'},
+  {date:'2568-12-10',day:'พุธ',      name:'วันรัฐธรรมนูญ'},
+  {date:'2568-12-31',day:'พุธ',      name:'วันสิ้นปี'},
+];
+const HOLIDAYS_2569=[
+  {date:'2569-01-01',day:'พฤหัสบดี', name:'วันขึ้นปีใหม่'},
+  {date:'2569-01-02',day:'ศุกร์',    name:'วันหยุดตามมติ ครม.'},
+  {date:'2569-03-03',day:'อังคาร',   name:'วันมาฆบูชา'},
+  {date:'2569-04-06',day:'จันทร์',   name:'วันจักรี'},
+  {date:'2569-04-13',day:'จันทร์',   name:'วันสงกรานต์'},
+  {date:'2569-04-14',day:'อังคาร',   name:'วันสงกรานต์'},
+  {date:'2569-04-15',day:'พุธ',      name:'วันสงกรานต์'},
+  {date:'2569-05-01',day:'ศุกร์',    name:'วันแรงงานแห่งชาติ'},
+  {date:'2569-05-04',day:'จันทร์',   name:'วันฉัตรมงคล'},
+  {date:'2569-05-31',day:'อาทิตย์',  name:'วันวิสาขบูชา'},
+  {date:'2569-06-03',day:'พุธ',      name:'วันเฉลิมพระชนมพรรษาราชินี'},
+  {date:'2569-07-28',day:'อังคาร',   name:'วันเฉลิมพระชนมพรรษา ร.10'},
+  {date:'2569-07-29',day:'พุธ',      name:'วันอาสาฬหบูชา'},
+  {date:'2569-08-12',day:'พุธ',      name:'วันแม่แห่งชาติ'},
+  {date:'2569-10-13',day:'อังคาร',   name:'วันนวมินทรมหาราช'},
+  {date:'2569-10-23',day:'ศุกร์',    name:'วันปิยมหาราช'},
+  {date:'2569-12-05',day:'เสาร์',    name:'วันชาติและวันพ่อแห่งชาติ'},
+  {date:'2569-12-10',day:'พฤหัสบดี', name:'วันรัฐธรรมนูญ'},
+  {date:'2569-12-31',day:'พฤหัสบดี', name:'วันสิ้นปี'},
+];
 
 // ── State ─────────────────────────────────
-let currentUser = null;
-let selectedType = '';
-let selectedPeriod = 'full';
-let mgrTabState = 'pending';
-let adminTabState = 'pending';
-let rejectTargetId = null;
-let historyData = {};   // realtime from Firebase
-let quotaData = {};     // realtime from Firebase
+let currentUser=null, selectedType='', selectedPeriod='full';
+let mgrTabState='pending', adminLeaveTabState='pending';
+let rejectTargetId=null, empEditId=null, delTargetId=null;
+let historyData={}, quotaData={}, usersData={};
+let selectedHolidayYear=2568;
 
-const $ = id => document.getElementById(id);
-const show = id => $(id) && $(id).classList.remove('hidden');
-const hide = id => $(id) && $(id).classList.add('hidden');
-const fmtDate = iso => {
-  const d = new Date(iso);
-  return d.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
-};
+const $=id=>document.getElementById(id);
+const show=id=>$(id)&&$(id).classList.remove('hidden');
+const hide=id=>$(id)&&$(id).classList.add('hidden');
+const fmtDate=iso=>{try{return new Date(iso).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});}catch{return iso;}};
+const months=['','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
 
-const statusCfg = {
-  approved:{label:'อนุมัติแล้ว',cls:'b-approved'},
-  pending: {label:'รออนุมัติ',  cls:'b-pending'},
-  rejected:{label:'ไม่อนุมัติ',cls:'b-rejected'},
-};
-const typeIcon = t => TYPES.find(x=>x.id===t)?.icon||'';
-const typeBadgeCls = {sick_cert:'b-sick',sick:'b-sick',personal:'b-personal',comp:'b-personal',maternity:'b-maternity',special:'b-special',dayoff:'b-dayoff'};
-
-function statusBadge(s){ const c=statusCfg[s]||{label:s,cls:'b-pending'}; return `<span class="badge ${c.cls}">${c.label}</span>`; }
-function typeBadge(t,d){ return `<span class="badge ${typeBadgeCls[t]||'b-personal'}" style="padding:2px 8px;border-radius:20px;font-weight:500">${d} วัน</span>`; }
-function deptPill(deptId){ if(!deptId) return ''; const d=DEPTS[deptId]; return `<span class="dept-pill" style="color:${d.color};background:${d.bg};border-color:${d.border}">${d.label}</span>`; }
+const statusCfg={approved:{label:'อนุมัติแล้ว',cls:'b-approved'},pending:{label:'รออนุมัติ',cls:'b-pending'},rejected:{label:'ไม่อนุมัติ',cls:'b-rejected'}};
+const typeBadgeCls={sick_cert:'b-sick',sick:'b-sick',personal:'b-personal',comp:'b-personal',maternity:'b-maternity',special:'b-special',dayoff:'b-dayoff'};
+const typeIcon=t=>TYPES.find(x=>x.id===t)?.icon||'';
+function statusBadge(s){const c=statusCfg[s]||{label:s,cls:'b-pending'};return `<span class="badge ${c.cls}">${c.label}</span>`;}
+function typeBadge(t,d){return `<span class="badge ${typeBadgeCls[t]||'b-personal'}" style="padding:2px 8px;border-radius:20px">${d} วัน</span>`;}
+function deptPill(deptId){if(!deptId)return '';const d=DEPTS[deptId]||DEPTS.other;return `<span class="dept-pill" style="color:${d.color};background:${d.bg};border-color:${d.border}">${d.label}</span>`;}
+function getAllUsers(){return Object.entries(usersData).map(([k,v])=>({...v,_key:k}));}
+function getHistory(){return Object.entries(historyData).map(([k,v])=>({...v,_key:k})).sort((a,b)=>b.createdAt-a.createdAt);}
+function getUserQuota(uid){return quotaData[uid]||JSON.parse(JSON.stringify(DEFAULT_QUOTA));}
 
 // ── Firebase Listeners ────────────────────
 function startListeners(){
-  // Listen history
-  db.ref('history').on('value', snap => {
-    historyData = snap.val() || {};
-    refreshViews();
-  });
-  // Listen quota
-  db.ref('quota').on('value', snap => {
-    quotaData = snap.val() || {};
-    refreshViews();
-  });
+  db.ref('history').on('value',snap=>{historyData=snap.val()||{};refreshViews();});
+  db.ref('quota').on('value',snap=>{quotaData=snap.val()||{};refreshViews();});
+  db.ref('users').on('value',snap=>{usersData=snap.val()||{};refreshViews();});
 }
-
+function stopListeners(){
+  db.ref('history').off();
+  db.ref('quota').off();
+  db.ref('users').off();
+}
 function refreshViews(){
-  if(!currentUser) return;
+  if(!currentUser)return;
   if(currentUser.role==='employee') renderEmployee();
   else if(currentUser.role==='manager') renderManager();
-  else renderAdmin();
+  else { renderLeaves(); renderEmpTable(); }
 }
 
-function getHistory(){ return Object.values(historyData).sort((a,b)=> b.createdAt - a.createdAt); }
-function getUserQuota(userId){
-  return quotaData[userId] || JSON.parse(JSON.stringify(DEFAULT_QUOTA));
-}
-
-// ── Init Firebase data ────────────────────
+// ── Init ──────────────────────────────────
 async function initDB(){
-  const snap = await db.ref('quota').once('value');
-  const existing = snap.val() || {};
-  const updates = {};
-  USERS.filter(u=>u.role==='employee').forEach(u=>{
-    if(!existing[u.id]){
-      // ยังไม่มี quota → สร้างใหม่
-      updates[u.id] = JSON.parse(JSON.stringify(DEFAULT_QUOTA));
-    } else {
-      // มีอยู่แล้ว → แค่ update total ของ comp เป็น 20 ถ้ายังไม่ถึง
-      if(!existing[u.id].comp || existing[u.id].comp.total !== 20){
-        updates[`${u.id}/comp`] = {
-          used: existing[u.id]?.comp?.used || 0,
-          total: 20
-        };
-      }
+  // seed default admin if users node empty
+  const snap=await db.ref('users').once('value');
+  if(!snap.val()){
+    const defaults=[
+      {username:'emp_it1', password:'1234', name:'สมชาย ใจดี',      role:'employee',dept:'it', position:'พนักงาน',   avatar:'ส',color:'#1a1a1a'},
+      {username:'emp_hr1', password:'1234', name:'สมหญิง รักงาน',   role:'employee',dept:'hr', position:'พนักงาน',   avatar:'ห',color:'#1a1a1a'},
+      {username:'mgr_it',  password:'1234', name:'ผู้จัดการ IT',    role:'manager', dept:'it', position:'ผู้จัดการ', avatar:'จ',color:'#1e40af'},
+      {username:'mgr_hr',  password:'1234', name:'ผู้จัดการ HR',    role:'manager', dept:'hr', position:'ผู้จัดการ', avatar:'จ',color:'#166534'},
+      {username:'admin',   password:'admin',name:'ผู้ดูแลระบบ',     role:'admin',   dept:null, position:'Admin',     avatar:'ผ',color:'#4f46e5'},
+    ];
+    const updates={};
+    defaults.forEach(u=>{const k=db.ref('users').push().key;updates[k]=u;});
+    await db.ref('users').update(updates);
+  }
+  // seed quota
+  const qSnap=await db.ref('quota').once('value');
+  const qExist=qSnap.val()||{};
+  const uSnap=await db.ref('users').once('value');
+  const uAll=uSnap.val()||{};
+  const qUpdates={};
+  Object.entries(uAll).forEach(([k,u])=>{
+    if(u.role==='employee'){
+      if(!qExist[k]) qUpdates[k]=JSON.parse(JSON.stringify(DEFAULT_QUOTA));
+      else if(!qExist[k].comp||qExist[k].comp.total!==20) qUpdates[`${k}/comp`]={used:qExist[k]?.comp?.used||0,total:20};
     }
   });
-  if(Object.keys(updates).length > 0){
-    await db.ref('quota').update(updates);
-  }
+  if(Object.keys(qUpdates).length>0) await db.ref('quota').update(qUpdates);
   hide('db-loading');
   show('login-page');
 }
 
 // ── Login ─────────────────────────────────
-function togglePw(){ const i=$('inp-pw'); i.type=i.type==='password'?'text':'password'; }
-$('inp-user').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
-$('inp-pw').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+function togglePw(){const i=$('inp-pw');i.type=i.type==='password'?'text':'password';}
+$('inp-user').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+$('inp-pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 
-function doLogin(){
-  const u=$('inp-user').value.trim(), p=$('inp-pw').value;
-  if(!u||!p){ showErr('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน'); return; }
-  const btn=$('btn-login'); btn.disabled=true; btn.textContent='กำลังเข้าสู่ระบบ...';
-  setTimeout(()=>{
-    const user=USERS.find(x=>x.username===u&&x.password===p);
-    if(user){ hideErr(); enterApp(user); }
-    else{ showErr('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'); btn.disabled=false; btn.textContent='เข้าสู่ระบบ →'; }
-  },400);
+async function doLogin(){
+  const u=$('inp-user').value.trim(),p=$('inp-pw').value;
+  if(!u||!p){showErr('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน');return;}
+  const btn=$('btn-login');btn.disabled=true;btn.textContent='กำลังเข้าสู่ระบบ...';
+  const snap=await db.ref('users').once('value');
+  const all=snap.val()||{};
+  const entry=Object.entries(all).find(([k,v])=>v.username===u&&v.password===p);
+  if(entry){
+    const [key,user]=entry;
+    hideErr();
+    enterApp({...user,_key:key});
+  } else {
+    showErr('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+    btn.disabled=false;btn.textContent='เข้าสู่ระบบ →';
+  }
 }
-function showErr(m){ $('login-error-text').textContent=m; show('login-error'); }
-function hideErr(){ hide('login-error'); }
+function showErr(m){$('login-error-text').textContent=m;show('login-error');}
+function hideErr(){hide('login-error');}
 
 function enterApp(user){
   currentUser=user;
-  hide('login-page'); show('app-page');
-  $('hdr-avatar').textContent=user.avatar;
-  $('hdr-avatar').style.background=user.color;
+  hide('login-page');show('app-page');
+  $('hdr-avatar').textContent=user.avatar||user.name[0];
+  $('hdr-avatar').style.background=user.color||'#1a1a1a';
   $('hdr-name').textContent=user.name;
-  $('hdr-dept').textContent=user.dept?DEPTS[user.dept].label:'';
+  $('hdr-dept').textContent=user.dept?DEPTS[user.dept]?.label||'':user.position||'';
   const rb=$('hdr-role-badge');
-  rb.classList.remove('hidden','badge-admin','badge-manager');
-  if(user.role==='admin'){rb.textContent='Admin';rb.classList.add('badge-admin');}
-  else if(user.role==='manager'){rb.textContent='Manager';rb.classList.add('badge-manager');}
+  rb.className='role-badge';
+  if(user.role==='admin'){rb.textContent='Admin';rb.classList.add('badge-admin');rb.classList.remove('hidden');}
+  else if(user.role==='manager'){rb.textContent='Manager';rb.classList.add('badge-manager');rb.classList.remove('hidden');}
   else rb.classList.add('hidden');
-  hide('view-employee'); hide('view-manager'); hide('view-admin');
-  if(user.role==='employee'){ show('view-employee'); renderEmployee(); }
-  else if(user.role==='manager'){ show('view-manager'); renderManager(); }
-  else{ show('view-admin'); renderAdmin(); }
+  hide('view-employee');hide('view-manager');hide('view-admin');
+  if(user.role==='employee'){show('view-employee');renderEmployee();}
+  else if(user.role==='manager'){show('view-manager');renderManager();}
+  else{show('view-admin');renderLeaves();renderEmpTable();}
   startListeners();
+  buildHolidayDropdown(2568);
 }
 
 function doLogout(){
-  db.ref('history').off();
-  db.ref('quota').off();
-  currentUser=null; selectedType=''; selectedPeriod='full';
-  hide('app-page'); show('login-page');
-  $('inp-user').value=''; $('inp-pw').value='';
-  $('btn-login').disabled=false; $('btn-login').textContent='เข้าสู่ระบบ →';
+  stopListeners();
+  currentUser=null;selectedType='';selectedPeriod='full';
+  hide('app-page');show('login-page');
+  $('inp-user').value='';$('inp-pw').value='';
+  $('btn-login').disabled=false;$('btn-login').textContent='เข้าสู่ระบบ →';
 }
 
 // ── Employee ──────────────────────────────
@@ -533,24 +594,20 @@ function empTab(tab,btn){
 }
 
 function renderEmployee(){
-  if(!currentUser||currentUser.role!=='employee') return;
-  const q = getUserQuota(currentUser.id);
-  // quota cards
+  if(!currentUser||currentUser.role!=='employee')return;
+  const q=getUserQuota(currentUser._key);
   $('quota-grid').innerHTML=TYPES.map(t=>{
     const qv=q[t.id]||{used:0,total:0};
     const pct=qv.total>0?Math.round(qv.used/qv.total*100):0;
-    return `<div class="card">
-      <div style="font-size:20px;margin-bottom:8px">${t.icon}</div>
+    return `<div class="card"><div style="font-size:20px;margin-bottom:8px">${t.icon}</div>
       <div style="font-size:11px;color:#888;margin-bottom:4px">${t.label}</div>
       <div style="display:flex;align-items:baseline;gap:3px;margin-bottom:10px">
         <span style="font-size:24px;font-weight:700;color:#1a1a1a">${qv.used}</span>
         <span style="font-size:11px;color:#bbb">/ ${qv.total}</span>
       </div>
-      <div class="progress-track"><div class="progress-bar" style="width:${pct}%"></div></div>
-    </div>`;
+      <div class="progress-track"><div class="progress-bar" style="width:${pct}%"></div></div></div>`;
   }).join('');
-  // history
-  const mine=getHistory().filter(h=>h.userId===currentUser.id);
+  const mine=getHistory().filter(h=>h.userId===currentUser._key);
   $('my-history-count').textContent=mine.length+' รายการ';
   $('my-history-list').innerHTML=mine.length?mine.map((item,i)=>`
     <div class="row" style="${i===mine.length-1?'border-bottom:none':''}">
@@ -558,65 +615,53 @@ function renderEmployee(){
       <div class="row-info">
         <div class="row-title"><strong style="font-size:13px;font-weight:500;color:#1a1a1a">${item.label}</strong>${typeBadge(item.type,item.days)}</div>
         <div class="row-sub">${item.from}${item.days>1&&item.from!==item.to?' — '+item.to:''}${item.note?' · '+item.note:''}</div>
-      </div>
-      ${statusBadge(item.status)}
+      </div>${statusBadge(item.status)}
     </div>`).join(''):'<div class="empty">ยังไม่มีประวัติการลา</div>';
-  renderTypeButtons();
-  updateSubmitBtn();
+  renderTypeButtons();updateSubmitBtn();
 }
 
 function renderTypeButtons(){
-  const el=$('type-btns'); if(!el||!currentUser) return;
-  const q=getUserQuota(currentUser.id);
+  const el=$('type-btns');if(!el||!currentUser)return;
+  const q=getUserQuota(currentUser._key);
   let html='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">';
   TYPES.forEach(t=>{
     const qv=q[t.id]||{used:0,total:0};
     const active=selectedType===t.id;
-    const bg=active?'#1a1a1a':'#fff';
-    const border=active?'#1a1a1a':'#eee';
-    const c1=active?'#ccc':'#888';
-    const c3=active?'#aaa':'#bbb';
     const rem=qv.total>0?`เหลือ ${qv.total-qv.used} วัน`:'เหลือ 0 วัน';
-    html+=`<button onclick="selectType('${t.id}')" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;border-radius:14px;border:1.5px solid ${border};background:${bg};cursor:pointer;box-sizing:border-box;width:100%;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.06)">
+    html+=`<button onclick="selectType('${t.id}')" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;border-radius:14px;border:1.5px solid ${active?'#1a1a1a':'#eee'};background:${active?'#1a1a1a':'#fff'};cursor:pointer;box-sizing:border-box;width:100%;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.06)">
       <div style="font-size:22px;margin-bottom:8px">${t.icon}</div>
-      <div style="font-size:11px;color:${c1};margin-bottom:4px;line-height:1.3">${t.label}</div>
-      <div style="font-size:11px;color:${c3}">${rem}</div>
+      <div style="font-size:11px;color:${active?'#ccc':'#888'};margin-bottom:4px;line-height:1.3">${t.label}</div>
+      <div style="font-size:11px;color:${active?'#aaa':'#bbb'}">${rem}</div>
     </button>`;
   });
-  html+='</div>';
-  el.innerHTML=html;
+  html+='</div>';el.innerHTML=html;
 }
 
 function selectType(id){
-  selectedType=id; renderTypeButtons();
-  const toWrap=$('f-to-wrap'), labelFrom=$('label-from'), dayoffExtra=$('dayoff-extra');
-  if(!toWrap||!labelFrom||!dayoffExtra) return;
-  const compExtra=$('comp-extra');
+  selectedType=id;renderTypeButtons();
+  const toWrap=$('f-to-wrap'),labelFrom=$('label-from'),dayoffExtra=$('dayoff-extra'),compExtra=$('comp-extra');
+  if(!toWrap||!labelFrom)return;
   if(id==='dayoff'){
-    labelFrom.textContent='วันที่ทำงานแทน';
-    toWrap.style.display='none';
-    dayoffExtra.classList.remove('hidden');
-    compExtra && compExtra.classList.add('hidden');
+    labelFrom.textContent='วันที่ทำงานแทน';toWrap.style.display='none';
+    dayoffExtra&&dayoffExtra.classList.remove('hidden');
+    compExtra&&compExtra.classList.add('hidden');
     $('f-to').value='';
   } else if(id==='comp'){
-    labelFrom.textContent='วันที่ขอลาชดเชย';
-    toWrap.style.display='none';
-    dayoffExtra.classList.add('hidden');
-    compExtra && compExtra.classList.remove('hidden');
+    labelFrom.textContent='วันที่ขอลาชดเชย';toWrap.style.display='none';
+    dayoffExtra&&dayoffExtra.classList.add('hidden');
+    compExtra&&compExtra.classList.remove('hidden');
     $('f-to').value='';
   } else {
-    labelFrom.textContent='วันที่เริ่มต้น';
-    toWrap.style.display='';
-    dayoffExtra.classList.add('hidden');
-    compExtra && compExtra.classList.add('hidden');
-    if($('f-dayoff')) $('f-dayoff').value='';
-  if($('f-comp-holiday')) $('f-comp-holiday').value='';
+    labelFrom.textContent='วันที่เริ่มต้น';toWrap.style.display='';
+    dayoffExtra&&dayoffExtra.classList.add('hidden');
+    compExtra&&compExtra.classList.add('hidden');
+    if($('f-dayoff'))$('f-dayoff').value='';
   }
   updateSubmitBtn();
 }
 
 function updateSubmitBtn(){
-  const el=$('btn-submit-leave'); if(!el) return;
+  const el=$('btn-submit-leave');if(!el)return;
   const from=$('f-from')?$('f-from').value:'';
   const to=$('f-to')?$('f-to').value:'';
   const dayoff=$('f-dayoff')?$('f-dayoff').value:'';
@@ -630,223 +675,31 @@ $('f-to').addEventListener('change',updateSubmitBtn);
 
 function setPeriod(p,btn){
   selectedPeriod=p;
-  ['period-full','period-am','period-pm'].forEach(id=>{
-    const b=$(id); if(!b) return;
-    const active=id===`period-${p}`;
+  ['full','am','pm'].forEach(id=>{
+    const b=$(`period-${id}`);if(!b)return;
+    const active=id===p;
     b.style.background=active?'#1a1a1a':'#fff';
     b.style.borderColor=active?'#1a1a1a':'#e8e8e8';
     b.querySelectorAll('div').forEach(el=>el.style.color=active?'#fff':'');
   });
   const toWrap=$('f-to-wrap');
-  if(toWrap) toWrap.style.display=p==='full'?'':'none';
-  if(p!=='full'&&$('f-to')) $('f-to').value=$('f-from').value;
+  if(toWrap)toWrap.style.display=p==='full'?'':'none';
+  if(p!=='full'&&$('f-to'))$('f-to').value=$('f-from').value;
   updateSubmitBtn();
 }
 
-async function submitLeave(){
-  const from=$('f-from').value, to=$('f-to').value, note=$('f-note').value;
-  const isComp = selectedType==='comp';
-  const compVal = isComp && $('f-comp-holiday') ? $('f-comp-holiday').value : '';
-  if(isComp && (!from||!compVal)) return;
-
-  const isDayoff=selectedType==='dayoff';
-  const dayoffDate=isDayoff?$('f-dayoff').value:null;
-  if(!selectedType||!from) return;
-  if(!isDayoff&&!isComp&&selectedPeriod==='full'&&!to) return;
-  if(isDayoff&&!dayoffDate) return;
-
-  const isHalf=!isDayoff&&!isComp&&selectedPeriod!=='full';
-  const days=isDayoff||isComp?1:isHalf?0.5:Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
-  const periodLabel=selectedPeriod==='am'?' (ครึ่งวันเช้า)':selectedPeriod==='pm'?' (ครึ่งวันบ่าย)':'';
-
-  let noteText='';
-  if(isDayoff){
-    noteText=`ทำงานแทนวันที่ ${fmtDate(from)} → หยุดวันที่ ${fmtDate(dayoffDate)}${note?' · '+note:''}`;
-  } else if(isComp){
-    const [hDate,hDay,hName]=compVal.split('|');
-    noteText=`ชดเชยวันหยุด: ${hName} (${hDay} ${fmtDate(hDate)})${note?' · '+note:''}`;
-  } else {
-    noteText=periodLabel+(note?' '+note:'');
-  }
-
-  const toDate = isDayoff?fmtDate(dayoffDate):isComp?fmtDate(from):isHalf?fmtDate(from):fmtDate(to);
-
-  const newItem={
-    userId:currentUser.id, employee:currentUser.name, dept:currentUser.dept,
-    type:selectedType, label:TYPES.find(t=>t.id===selectedType).label,
-    from:fmtDate(from), to:toDate,
-    days, note:noteText, status:'pending',
-    submitted:fmtDate(new Date().toISOString().slice(0,10)),
-    createdAt: Date.now()
-  };
-
-  const newRef = db.ref('history').push();
-  await newRef.set(newItem);
-
-  selectedType=''; selectedPeriod='full';
-  $('f-from').value=''; $('f-to').value=''; $('f-note').value='';
-  if($('f-dayoff')) $('f-dayoff').value='';
-  const toWrap=$('f-to-wrap'); if(toWrap) toWrap.style.display='';
-  const labelFrom=$('label-from'); if(labelFrom) labelFrom.textContent='วันที่เริ่มต้น';
-  const dayoffExtra=$('dayoff-extra'); if(dayoffExtra) dayoffExtra.classList.add('hidden');
-  ['period-full','period-am','period-pm'].forEach(id=>{ const b=$(id); if(!b) return; b.style.background=id==='period-full'?'#1a1a1a':'#fff'; b.style.borderColor=id==='period-full'?'#1a1a1a':'#e8e8e8'; b.querySelectorAll('div').forEach(el=>el.style.color=id==='period-full'?'#fff':''); });
-  renderTypeButtons(); updateSubmitBtn();
-  show('emp-success'); setTimeout(()=>hide('emp-success'),3000);
-}
-
-// ── Manager ───────────────────────────────
-function mgrTab(tab,btn){
-  mgrTabState=tab;
-  document.querySelectorAll('#view-manager .subtab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); renderManager();
-}
-
-function renderManager(){
-  if(!currentUser||currentUser.role!=='manager') return;
-  const dept=currentUser.dept;
-  const all=getHistory().filter(h=>h.dept===dept);
-  const stats={pending:all.filter(h=>h.status==='pending').length,approved:all.filter(h=>h.status==='approved').length,rejected:all.filter(h=>h.status==='rejected').length};
-  document.querySelectorAll('#view-manager .subtab')[0].textContent=`รออนุมัติ${stats.pending>0?' ('+stats.pending+')':''}`;
-  $('mgr-title').textContent='คำขอลา — '+DEPTS[dept].label;
-  $('mgr-stats').innerHTML=renderStats(stats);
-  const search=($('mgr-search')||{value:''}).value||'';
-  const filtered=all.filter(h=>(mgrTabState==='all'||h.status===mgrTabState)&&(h.employee.includes(search)||h.label.includes(search)));
-  $('mgr-list').innerHTML=renderRows(filtered,'manager');
-}
-
-// ── Admin ─────────────────────────────────
-function adminTab(tab,btn){
-  adminTabState=tab;
-  document.querySelectorAll('#view-admin .subtab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); renderAdmin();
-}
-
-function renderAdmin(){
-  if(!currentUser||currentUser.role!=='admin') return;
-  const all=getHistory();
-  const stats={pending:all.filter(h=>h.status==='pending').length,approved:all.filter(h=>h.status==='approved').length,rejected:all.filter(h=>h.status==='rejected').length};
-  document.querySelectorAll('#view-admin .subtab')[0].textContent=`รออนุมัติ${stats.pending>0?' ('+stats.pending+')':''}`;
-  $('admin-stats').innerHTML=renderStats(stats);
-  const search=($('admin-search')||{value:''}).value||'';
-  const filtered=all.filter(h=>(adminTabState==='all'||h.status===adminTabState)&&(h.employee.includes(search)||h.label.includes(search)||DEPTS[h.dept]?.label.includes(search)));
-  $('admin-list').innerHTML=renderRows(filtered,'admin');
-}
-
-function renderStats(s){
-  return [['รออนุมัติ',s.pending,'#92400e','#fffbeb','#fde68a'],['อนุมัติแล้ว',s.approved,'#166534','#f0fdf4','#bbf7d0'],['ไม่อนุมัติ',s.rejected,'#991b1b','#fef2f2','#fecaca']]
-    .map(([l,v,c,bg,b])=>`<div class="card" style="background:${bg};border-color:${b}">
-      <div style="font-size:12px;color:${c};font-weight:500;margin-bottom:6px">${l}</div>
-      <div style="font-size:28px;font-weight:700;color:${c}">${v}</div>
-      <div style="font-size:11px;color:${c};opacity:.7">รายการ</div>
-    </div>`).join('');
-}
-
-function renderRows(filtered, mode){
-  if(!filtered.length) return '<div class="empty">ไม่พบรายการ</div>';
-  return filtered.map((item,i)=>`
-    <div class="row" style="${i===filtered.length-1?'border-bottom:none':''}">
-      <div class="row-icon">${typeIcon(item.type)}</div>
-      <div class="row-info">
-        <div class="row-title">
-          <strong style="font-size:13px;font-weight:600;color:#1a1a1a">${item.employee}</strong>
-          ${mode==='admin'?deptPill(item.dept):''}
-          ${typeBadge(item.type,item.days)}
-        </div>
-        <div class="row-sub">${item.label} · ${item.from}${item.days>1&&item.from!==item.to?' — '+item.to:''}${item.note?' · '+item.note:''}
-          <span style="color:#ccc"> · ยื่นเมื่อ ${item.submitted}</span>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
-        ${item.status==='pending'
-          ?`<button class="btn-approve" onclick="approveItem('${item._key}','${item.userId}','${item.type}',${item.days})">อนุมัติ ✓</button>
-             <button class="btn-reject-sm" onclick="openReject('${item._key}')">ปฏิเสธ ✕</button>`
-          :statusBadge(item.status)}
-      </div>
-    </div>`).join('');
-}
-
-// ── Approve / Reject ──────────────────────
-async function approveItem(key, userId, type, days){
-  // อัปเดต status
-  await db.ref(`history/${key}/status`).set('approved');
-  // ตัดวันลา
-  const q = getUserQuota(userId);
-  const cur = q[type]||{used:0,total:0};
-  await db.ref(`quota/${userId}/${type}/used`).set((cur.used||0)+Number(days));
-}
-
-function openReject(key){ rejectTargetId=key; $('reject-note').value=''; show('reject-modal'); }
-function closeModal(){ hide('reject-modal'); rejectTargetId=null; }
-async function confirmReject(){
-  await db.ref(`history/${rejectTargetId}/status`).set('rejected');
-  closeModal();
-}
-
-// ── Firebase: attach _key to items ────────
-function getHistory(){
-  const raw = historyData||{};
-  return Object.entries(raw)
-    .map(([k,v])=>({...v,_key:k}))
-    .sort((a,b)=>b.createdAt-a.createdAt);
-}
-
-// ── Export Excel ──────────────────────────
-function exportExcel(){
-  const search=($('admin-search')||{value:''}).value||'';
-  const filtered=getHistory().filter(h=>(adminTabState==='all'||h.status===adminTabState)&&(h.employee.includes(search)||h.label.includes(search)||DEPTS[h.dept]?.label.includes(search)));
-  const statusLabel={approved:'อนุมัติแล้ว',pending:'รออนุมัติ',rejected:'ไม่อนุมัติ'};
-  const headers=['ชื่อพนักงาน','ฝ่าย','ประเภทการลา','วันที่เริ่มต้น','วันที่สิ้นสุด','จำนวนวัน','สถานะ','หมายเหตุ','วันที่ยื่น'];
-  const rows=filtered.map(h=>[h.employee,DEPTS[h.dept]?.label||'',h.label,h.from,h.to,h.days,statusLabel[h.status]||'',h.note||'',h.submitted]);
-  const bom='\uFEFF';
-  const csv=bom+[headers,...rows].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n');
-  downloadFile(csv,'text/csv',`LeaveOS_${stamp()}.csv`);
-}
-
-// ── Export TigerSoft ──────────────────────
-function exportTigerSoft(){
-  const approved=getHistory().filter(h=>h.status==='approved');
-  if(!approved.length){ alert('ไม่มีรายการที่อนุมัติแล้ว'); return; }
-  const thM={'ม.ค.':'01','ก.พ.':'02','มี.ค.':'03','เม.ย.':'04','พ.ค.':'05','มิ.ย.':'06','ก.ค.':'07','ส.ค.':'08','ก.ย.':'09','ต.ค.':'10','พ.ย.':'11','ธ.ค.':'12'};
-  const parseDate=str=>{ const p=str.trim().split(' '); if(p.length<3) return str; return `${p[0].padStart(2,'0')}/${thM[p[1]]||'01'}/${parseInt(p[2])-543}`; };
-  const typeCode={sick_cert:'SC',personal:'P',comp:'C',maternity:'M',special:'SP',dayoff:'DO',sick:'S'};
-  const typeName={sick_cert:'Sick Leave (Medical Cert)',personal:'Personal Leave',comp:'Compensatory Leave',maternity:'Maternity Leave',special:'Special Leave',dayoff:'Day Off Exchange',sick:'Sick Leave'};
-  const getEmpId=uid=>{ const u=USERS.find(x=>x.id===uid); return u?String(USERS.indexOf(u)+1).padStart(5,'0'):'00000'; };
-  const headers=['EmpID','EmpName','LeaveCode','LeaveDesc','StartDate','EndDate','Days','Remark'];
-  const rows=approved.map(h=>[getEmpId(h.userId),h.employee,typeCode[h.type]||h.type,typeName[h.type]||h.label,parseDate(h.from),parseDate(h.to),h.days,h.note||'']);
-  const bom='\uFEFF';
-  const csv=bom+[headers,...rows].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n');
-  downloadFile(csv,'text/csv',`TigerSoft_Leave_${stamp()}.csv`);
-}
-
-function downloadFile(content,type,filename){
-  const blob=new Blob([content],{type:`${type};charset=utf-8`});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a'); a.href=url; a.download=filename; a.click();
-  URL.revokeObjectURL(url);
-}
-function stamp(){ const n=new Date(); return `${n.getFullYear()}${String(n.getMonth()+1).padStart(2,'0')}${String(n.getDate()).padStart(2,'0')}`; }
-
-// ── Init ─────────────────────────────────
-let selectedHolidayYear = 2568;
-
-function selectHolidayYear(year, btn){
-  selectedHolidayYear = year;
-  $('btn-year-68').style.background = year===2568?'#1a1a1a':'#fff';
-  $('btn-year-68').style.color      = year===2568?'#fff':'#555';
-  $('btn-year-68').style.borderColor= year===2568?'#1a1a1a':'#e8e8e8';
-  $('btn-year-69').style.background = year===2569?'#1a1a1a':'#fff';
-  $('btn-year-69').style.color      = year===2569?'#fff':'#555';
-  $('btn-year-69').style.borderColor= year===2569?'#1a1a1a':'#e8e8e8';
-  buildHolidayDropdown(year);
-  updateSubmitBtn();
+function selectHolidayYear(year,btn){
+  selectedHolidayYear=year;
+  const b68=$('btn-year-68'),b69=$('btn-year-69');
+  if(b68){b68.style.background=year===2568?'#1a1a1a':'#fff';b68.style.color=year===2568?'#fff':'#555';b68.style.borderColor=year===2568?'#1a1a1a':'#e8e8e8';}
+  if(b69){b69.style.background=year===2569?'#1a1a1a':'#fff';b69.style.color=year===2569?'#fff':'#555';b69.style.borderColor=year===2569?'#1a1a1a':'#e8e8e8';}
+  buildHolidayDropdown(year);updateSubmitBtn();
 }
 
 function buildHolidayDropdown(year){
-  const sel = $('f-comp-holiday');
-  if(!sel) return;
-  year = year || selectedHolidayYear || 2568;
-  const list = year===2569 ? HOLIDAYS_2569 : HOLIDAYS_2568;
-  const months=['','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  const sel=$('f-comp-holiday');if(!sel)return;
+  year=year||2568;
+  const list=year===2569?HOLIDAYS_2569:HOLIDAYS_2568;
   sel.innerHTML='<option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option>';
   list.forEach(h=>{
     const p=h.date.split('-');
@@ -857,7 +710,380 @@ function buildHolidayDropdown(year){
   });
 }
 
-initDB().then(()=>buildHolidayDropdown());
+async function submitLeave(){
+  const from=$('f-from').value,to=$('f-to').value,note=$('f-note').value;
+  const isDayoff=selectedType==='dayoff';
+  const isComp=selectedType==='comp';
+  const dayoffDate=isDayoff?$('f-dayoff').value:null;
+  const compVal=isComp&&$('f-comp-holiday')?$('f-comp-holiday').value:'';
+  if(!selectedType||!from)return;
+  if(!isDayoff&&!isComp&&selectedPeriod==='full'&&!to)return;
+  if(isDayoff&&!dayoffDate)return;
+  if(isComp&&(!from||!compVal))return;
+  const isHalf=!isDayoff&&!isComp&&selectedPeriod!=='full';
+  const days=isDayoff||isComp?1:isHalf?0.5:Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
+  const periodLabel=selectedPeriod==='am'?' (ครึ่งวันเช้า)':selectedPeriod==='pm'?' (ครึ่งวันบ่าย)':'';
+  let noteText='';
+  if(isDayoff) noteText=`ทำงานแทนวันที่ ${fmtDate(from)} → หยุดวันที่ ${fmtDate(dayoffDate)}${note?' · '+note:''}`;
+  else if(isComp){const[hDate,hDay,hName]=compVal.split('|');noteText=`ชดเชยวันหยุด: ${hName} (${hDay} ${fmtDate(hDate)})${note?' · '+note:''}`;}
+  else noteText=periodLabel+(note?' '+note:'');
+  const toDate=isDayoff?fmtDate(dayoffDate):isComp?fmtDate(from):isHalf?fmtDate(from):fmtDate(to);
+  await db.ref('history').push({
+    userId:currentUser._key,employee:currentUser.name,dept:currentUser.dept,
+    type:selectedType,label:TYPES.find(t=>t.id===selectedType).label,
+    from:fmtDate(from),to:toDate,days,note:noteText,status:'pending',
+    submitted:fmtDate(new Date().toISOString().slice(0,10)),createdAt:Date.now()
+  });
+  selectedType='';selectedPeriod='full';
+  ['f-from','f-to','f-note','f-dayoff'].forEach(id=>{if($(id))$(id).value='';});
+  if($('f-comp-holiday'))$('f-comp-holiday').value='';
+  const toWrap=$('f-to-wrap');if(toWrap)toWrap.style.display='';
+  const lf=$('label-from');if(lf)lf.textContent='วันที่เริ่มต้น';
+  ['dayoff-extra','comp-extra'].forEach(id=>{const el=$(id);if(el)el.classList.add('hidden');});
+  ['full','am','pm'].forEach(id=>{const b=$(`period-${id}`);if(!b)return;const a=id==='full';b.style.background=a?'#1a1a1a':'#fff';b.style.borderColor=a?'#1a1a1a':'#e8e8e8';b.querySelectorAll('div').forEach(el=>el.style.color=a?'#fff':'');});
+  renderTypeButtons();updateSubmitBtn();
+  show('emp-success');setTimeout(()=>hide('emp-success'),3000);
+}
+
+// ── Manager ───────────────────────────────
+function mgrTab(tab,btn){
+  mgrTabState=tab;
+  document.querySelectorAll('#view-manager .subtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderManager();
+}
+function renderManager(){
+  if(!currentUser||currentUser.role!=='manager')return;
+  const dept=currentUser.dept;
+  const all=getHistory().filter(h=>h.dept===dept);
+  const stats={pending:all.filter(h=>h.status==='pending').length,approved:all.filter(h=>h.status==='approved').length,rejected:all.filter(h=>h.status==='rejected').length};
+  document.querySelectorAll('#view-manager .subtab')[0].textContent=`รออนุมัติ${stats.pending>0?' ('+stats.pending+')':''}`;
+  $('mgr-title').textContent='คำขอลา — '+(DEPTS[dept]?.label||dept);
+  $('mgr-stats').innerHTML=renderStats(stats);
+  const search=($('mgr-search')||{value:''}).value||'';
+  const filtered=all.filter(h=>(mgrTabState==='all'||h.status===mgrTabState)&&(h.employee.includes(search)||h.label.includes(search)));
+  $('mgr-list').innerHTML=renderRows(filtered,'manager');
+}
+
+// ── Admin Leaves ──────────────────────────
+function adminTab(tab,btn){
+  document.querySelectorAll('#view-admin > .tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  tab==='leaves'?(show('admin-leaves'),hide('admin-employees')):(hide('admin-leaves'),show('admin-employees'));
+}
+function leaveTab(tab,btn){
+  adminLeaveTabState=tab;
+  document.querySelectorAll('#admin-leaves .subtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderLeaves();
+}
+function renderLeaves(){
+  if(!currentUser||currentUser.role!=='admin')return;
+  const all=getHistory();
+  const stats={pending:all.filter(h=>h.status==='pending').length,approved:all.filter(h=>h.status==='approved').length,rejected:all.filter(h=>h.status==='rejected').length};
+  document.querySelectorAll('#admin-leaves .subtab')[0].textContent=`รออนุมัติ${stats.pending>0?' ('+stats.pending+')':''}`;
+  $('admin-stats').innerHTML=renderStats(stats);
+  const search=($('admin-search')||{value:''}).value||'';
+  const filtered=all.filter(h=>(adminLeaveTabState==='all'||h.status===adminLeaveTabState)&&(h.employee.includes(search)||h.label.includes(search)||DEPTS[h.dept]?.label.includes(search)));
+  $('admin-list').innerHTML=renderRows(filtered,'admin');
+}
+
+function renderStats(s){
+  return[['รออนุมัติ',s.pending,'#92400e','#fffbeb','#fde68a'],['อนุมัติแล้ว',s.approved,'#166534','#f0fdf4','#bbf7d0'],['ไม่อนุมัติ',s.rejected,'#991b1b','#fef2f2','#fecaca']]
+    .map(([l,v,c,bg,b])=>`<div class="card" style="background:${bg};border-color:${b}">
+      <div style="font-size:12px;color:${c};font-weight:500;margin-bottom:6px">${l}</div>
+      <div style="font-size:28px;font-weight:700;color:${c}">${v}</div>
+      <div style="font-size:11px;color:${c};opacity:.7">รายการ</div></div>`).join('');
+}
+
+function renderRows(filtered,mode){
+  if(!filtered.length)return '<div class="empty">ไม่พบรายการ</div>';
+  return filtered.map((item,i)=>`
+    <div class="row" style="${i===filtered.length-1?'border-bottom:none':''}">
+      <div class="row-icon">${typeIcon(item.type)}</div>
+      <div class="row-info">
+        <div class="row-title">
+          <strong style="font-size:13px;font-weight:600;color:#1a1a1a">${item.employee}</strong>
+          ${mode==='admin'?deptPill(item.dept):''}
+          ${typeBadge(item.type,item.days)}
+        </div>
+        <div class="row-sub">${item.label} · ${item.from}${item.days>1&&item.from!==item.to?' — '+item.to:''}${item.note?' · '+item.note:''}
+          <span style="color:#ccc"> · ยื่นเมื่อ ${item.submitted}</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+        ${item.status==='pending'
+          ?`<button class="btn-approve" onclick="approveItem('${item._key}','${item.userId}','${item.type}',${item.days})">อนุมัติ ✓</button>
+             <button class="btn-reject-sm" onclick="openReject('${item._key}')">ปฏิเสธ ✕</button>`
+          :statusBadge(item.status)}
+      </div>
+    </div>`).join('');
+}
+
+// ── Approve/Reject ────────────────────────
+async function approveItem(key,userId,type,days){
+  await db.ref(`history/${key}/status`).set('approved');
+  const q=getUserQuota(userId);
+  const cur=q[type]||{used:0,total:0};
+  await db.ref(`quota/${userId}/${type}/used`).set((cur.used||0)+Number(days));
+}
+function openReject(key){rejectTargetId=key;$('reject-note').value='';show('reject-modal');}
+function closeModal(id){hide(id);}
+async function confirmReject(){
+  await db.ref(`history/${rejectTargetId}/status`).set('rejected');
+  closeModal('reject-modal');rejectTargetId=null;
+}
+
+// ── Employee Management ───────────────────
+function renderEmpTable(){
+  if(!currentUser||currentUser.role!=='admin')return;
+  const search=($('emp-search')||{value:''}).value.toLowerCase();
+  const all=getAllUsers().filter(u=>!search||u.name.toLowerCase().includes(search)||u.username.toLowerCase().includes(search)||(u.position||'').toLowerCase().includes(search));
+  const roleLabel={employee:'พนักงาน',manager:'หัวหน้าฝ่าย',admin:'ผู้ดูแลระบบ'};
+  $('emp-tbody').innerHTML=all.length?all.map(u=>`
+    <tr>
+      <td><div style="font-weight:600;color:#1a1a1a">${u.name}</div><div style="font-size:11px;color:#aaa">${u.username}</div></td>
+      <td style="color:#666">${u.username}</td>
+      <td style="color:#555">${u.position||'—'}</td>
+      <td>${u.dept?deptPill(u.dept):'—'}</td>
+      <td><span class="badge ${u.role==='admin'?'badge-admin':u.role==='manager'?'badge-manager':'b-personal'}" style="border:none">${roleLabel[u.role]||u.role}</span></td>
+      <td style="white-space:nowrap">
+        <button class="btn-edit" onclick="openEmpModal('${u._key}')">✏️ แก้ไข</button>
+        <button class="btn-edit" style="margin-left:4px;border-color:#bfdbfe;color:#1e40af" onclick="openQuotaModal('${u._key}')">📅 วันลา</button>
+        ${u._key!==currentUser._key?`<button class="btn-del" style="margin-left:4px" onclick="openDelModal('${u._key}','${u.name}')">🗑️ ลบ</button>`:''}
+      </td>
+    </tr>`).join(''):`<tr><td colspan="6" style="text-align:center;color:#bbb;padding:32px">ไม่พบพนักงาน</td></tr>`;
+}
+
+function openEmpModal(key){
+  empEditId=key;
+  $('em-err').classList.add('hidden');
+  if(key){
+    const u=usersData[key];if(!u)return;
+    $('emp-modal-title').textContent='แก้ไขข้อมูลพนักงาน';
+    $('em-name').value=u.name||'';
+    $('em-username').value=u.username||'';
+    $('em-password').value=u.password||'';
+    $('em-position').value=u.position||'';
+    $('em-dept').value=u.dept||'it';
+    $('em-role').value=u.role||'employee';
+  } else {
+    $('emp-modal-title').textContent='เพิ่มพนักงานใหม่';
+    ['em-name','em-username','em-password','em-position'].forEach(id=>$(id).value='');
+    $('em-dept').value='it';$('em-role').value='employee';
+  }
+  show('emp-modal');
+}
+
+async function saveEmployee(){
+  const name=$('em-name').value.trim();
+  const username=$('em-username').value.trim();
+  const password=$('em-password').value.trim();
+  const position=$('em-position').value.trim();
+  const dept=$('em-dept').value;
+  const role=$('em-role').value;
+  if(!name||!username||!password){
+    $('em-err-text').textContent='กรุณากรอกชื่อ Username และรหัสผ่าน';
+    show('em-err');return;
+  }
+  // check duplicate username
+  const snap=await db.ref('users').once('value');
+  const all=snap.val()||{};
+  const dup=Object.entries(all).find(([k,v])=>v.username===username&&k!==empEditId);
+  if(dup){$('em-err-text').textContent='Username นี้ถูกใช้แล้ว';show('em-err');return;}
+
+  const avatar=name[0];
+  const color=role==='admin'?'#4f46e5':role==='manager'?(dept==='it'?'#1e40af':dept==='hr'?'#166534':'#92400e'):'#1a1a1a';
+  const data={name,username,password,position,dept:role==='admin'?null:dept,role,avatar,color};
+
+  if(empEditId){
+    await db.ref(`users/${empEditId}`).update(data);
+  } else {
+    const newKey=db.ref('users').push().key;
+    await db.ref(`users/${newKey}`).set(data);
+    if(role==='employee') await db.ref(`quota/${newKey}`).set(JSON.parse(JSON.stringify(DEFAULT_QUOTA)));
+  }
+  closeModal('emp-modal');
+}
+
+function openDelModal(key,name){
+  delTargetId=key;
+  $('del-emp-name').textContent=name;
+  show('del-modal');
+}
+async function confirmDelete(){
+  if(!delTargetId)return;
+  await db.ref(`users/${delTargetId}`).remove();
+  closeModal('del-modal');delTargetId=null;
+}
+
+let quotaEditId = null;
+
+function openQuotaModal(key){
+  quotaEditId = key;
+  const u = usersData[key];
+  if(!u) return;
+  $('quota-modal-title').textContent = 'จัดการวันลา';
+  $('quota-modal-name').textContent = `👤 ${u.name} · ${u.position||''} · ${DEPTS[u.dept]?.label||''}`;
+  const q = getUserQuota(key);
+  $('quota-fields').innerHTML = TYPES.map(t=>{
+    const qv = q[t.id]||{used:0,total:0};
+    return `<div style="display:grid;grid-template-columns:1fr 100px 100px;align-items:center;gap:10px;padding:10px 12px;background:#fafafa;border-radius:10px;border:1px solid #eee">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:18px">${t.icon}</span>
+        <span style="font-size:13px;font-weight:500;color:#1a1a1a">${t.label}</span>
+      </div>
+      <div>
+        <label style="display:block;font-size:10px;color:#999;margin-bottom:3px">ใช้ไปแล้ว</label>
+        <input type="number" id="q-used-${t.id}" value="${qv.used}" min="0" class="field-input" style="padding:6px 8px;font-size:13px;text-align:center">
+      </div>
+      <div>
+        <label style="display:block;font-size:10px;color:#999;margin-bottom:3px">โควต้ารวม</label>
+        <input type="number" id="q-total-${t.id}" value="${qv.total}" min="0" class="field-input" style="padding:6px 8px;font-size:13px;text-align:center">
+      </div>
+    </div>`;
+  }).join('');
+  show('quota-modal');
+}
+
+async function saveQuota(){
+  if(!quotaEditId) return;
+  const updates = {};
+  TYPES.forEach(t=>{
+    const used  = parseInt($(`q-used-${t.id}`)?.value)||0;
+    const total = parseInt($(`q-total-${t.id}`)?.value)||0;
+    updates[t.id] = {used, total};
+  });
+  await db.ref(`quota/${quotaEditId}`).set(updates);
+  closeModal('quota-modal');
+}
+
+
+let importRows = [];
+
+function downloadTemplate(){
+  const headers = [['ชื่อ-นามสกุล','Username','รหัสผ่าน','ตำแหน่ง','ฝ่าย (it/hr/fin/ops/mkt/other)','Role (employee/manager/admin)']];
+  const example = [
+    ['สมชาย ใจดี','somchai','1234','พนักงาน','it','employee'],
+    ['สมหญิง รักงาน','somying','1234','แคชเชียร์','hr','employee'],
+    ['ผู้จัดการ IT','mgr_it2','1234','ผู้จัดการ','it','manager'],
+  ];
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet([...headers,...example]);
+  ws['!cols'] = [{wch:20},{wch:15},{wch:12},{wch:18},{wch:25},{wch:25}];
+  XLSX.utils.book_append_sheet(wb,ws,'พนักงาน');
+  XLSX.writeFile(wb,'LeaveOS_Template.xlsx');
+}
+
+function importExcel(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const data = new Uint8Array(ev.target.result);
+    const wb = XLSX.read(data,{type:'array'});
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+    if(rows.length < 2){ alert('ไม่พบข้อมูลในไฟล์'); return; }
+
+    const validRoles = ['employee','manager','admin'];
+    const validDepts = ['it','hr','fin','ops','mkt','other'];
+    const existingUsers = getAllUsers();
+
+    importRows = rows.slice(1).filter(r=>r[0]||r[1]).map((r,i)=>{
+      const name    = String(r[0]||'').trim();
+      const username= String(r[1]||'').trim();
+      const password= String(r[2]||'').trim();
+      const position= String(r[3]||'').trim();
+      const dept    = String(r[4]||'it').trim().toLowerCase();
+      const role    = String(r[5]||'employee').trim().toLowerCase();
+      let status='ok', error='';
+      if(!name)      { status='error'; error='ไม่มีชื่อ'; }
+      else if(!username){ status='error'; error='ไม่มี Username'; }
+      else if(!password){ status='error'; error='ไม่มีรหัสผ่าน'; }
+      else if(!validRoles.includes(role)){ status='error'; error=`Role ไม่ถูกต้อง: ${role}`; }
+      else if(!validDepts.includes(dept) && role!=='admin'){ status='error'; error=`ฝ่ายไม่ถูกต้อง: ${dept}`; }
+      else if(existingUsers.find(u=>u.username===username)){ status='warn'; error='Username ซ้ำ (จะข้าม)'; }
+      return {name,username,password,position,dept,role,status,error,idx:i+2};
+    });
+
+    const ok   = importRows.filter(r=>r.status==='ok').length;
+    const warn = importRows.filter(r=>r.status==='warn').length;
+    const err  = importRows.filter(r=>r.status==='error').length;
+    $('import-summary').innerHTML = `พบ ${importRows.length} แถว · <span style="color:#166534">นำเข้าได้ ${ok} รายการ</span>${warn>0?` · <span style="color:#92400e">ซ้ำ ${warn} รายการ (ข้าม)</span>`:''}${err>0?` · <span style="color:#991b1b">ข้อผิดพลาด ${err} รายการ</span>`:''}`;
+
+    const deptLabel={it:'IT',hr:'HR',fin:'การเงิน',ops:'ปฏิบัติการ',mkt:'การตลาด',other:'อื่นๆ'};
+    const roleLabel={employee:'พนักงาน',manager:'หัวหน้าฝ่าย',admin:'ผู้ดูแลระบบ'};
+    $('import-tbody').innerHTML = importRows.map(r=>`
+      <tr style="opacity:${r.status==='error'?0.5:1}">
+        <td style="color:#aaa">${r.idx}</td>
+        <td style="font-weight:500">${r.name||'—'}</td>
+        <td style="font-family:monospace;font-size:12px">${r.username||'—'}</td>
+        <td style="font-family:monospace;font-size:12px">${r.password||'—'}</td>
+        <td>${r.position||'—'}</td>
+        <td>${deptLabel[r.dept]||r.dept}</td>
+        <td>${roleLabel[r.role]||r.role}</td>
+        <td>${r.status==='ok'?'<span style="color:#166534;font-weight:600">✓ นำเข้า</span>':r.status==='warn'?`<span style="color:#92400e">⚠ ${r.error}</span>`:`<span style="color:#991b1b">✕ ${r.error}</span>`}</td>
+      </tr>`).join('');
+
+    show('import-preview');
+    e.target.value='';
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+async function confirmImport(){
+  const toImport = importRows.filter(r=>r.status==='ok');
+  if(!toImport.length){ alert('ไม่มีรายการที่นำเข้าได้'); return; }
+  const btn = document.querySelector('#import-preview .btn-confirm');
+  btn.disabled=true; btn.textContent='กำลังนำเข้า...';
+  const updates={};
+  toImport.forEach(u=>{
+    const key = db.ref('users').push().key;
+    const color = u.role==='admin'?'#4f46e5':u.role==='manager'?'#1e40af':'#1a1a1a';
+    updates[`users/${key}`] = {name:u.name,username:u.username,password:u.password,position:u.position,dept:u.role==='admin'?null:u.dept,role:u.role,avatar:u.name[0],color};
+    if(u.role==='employee') updates[`quota/${key}`] = JSON.parse(JSON.stringify(DEFAULT_QUOTA));
+  });
+  await db.ref('/').update(updates);
+  cancelImport();
+  btn.disabled=false; btn.textContent='นำเข้าทั้งหมด';
+  alert(`✅ นำเข้าสำเร็จ ${toImport.length} รายการ`);
+}
+
+function cancelImport(){
+  importRows=[];
+  hide('import-preview');
+  $('import-tbody').innerHTML='';
+}
+
+// ── Export ────────────────────────────────
+function exportExcel(){
+  const search=($('admin-search')||{value:''}).value||'';
+  const filtered=getHistory().filter(h=>(adminLeaveTabState==='all'||h.status===adminLeaveTabState)&&(h.employee.includes(search)||h.label.includes(search)||DEPTS[h.dept]?.label.includes(search)));
+  const sL={approved:'อนุมัติแล้ว',pending:'รออนุมัติ',rejected:'ไม่อนุมัติ'};
+  const headers=['ชื่อพนักงาน','ฝ่าย','ประเภทการลา','วันที่เริ่มต้น','วันที่สิ้นสุด','จำนวนวัน','สถานะ','หมายเหตุ','วันที่ยื่น'];
+  const rows=filtered.map(h=>[h.employee,DEPTS[h.dept]?.label||'',h.label,h.from,h.to,h.days,sL[h.status]||'',h.note||'',h.submitted]);
+  dlFile('\uFEFF'+[headers,...rows].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n'),'text/csv',`LeaveOS_${stamp()}.csv`);
+}
+function exportTigerSoft(){
+  const approved=getHistory().filter(h=>h.status==='approved');
+  if(!approved.length){alert('ไม่มีรายการที่อนุมัติแล้ว');return;}
+  const thM={'ม.ค.':'01','ก.พ.':'02','มี.ค.':'03','เม.ย.':'04','พ.ค.':'05','มิ.ย.':'06','ก.ค.':'07','ส.ค.':'08','ก.ย.':'09','ต.ค.':'10','พ.ย.':'11','ธ.ค.':'12'};
+  const pd=str=>{const p=str.trim().split(' ');if(p.length<3)return str;return`${p[0].padStart(2,'0')}/${thM[p[1]]||'01'}/${parseInt(p[2])-543}`;};
+  const tC={sick_cert:'SC',personal:'P',comp:'C',maternity:'M',special:'SP',dayoff:'DO',sick:'S'};
+  const tN={sick_cert:'Sick Leave (Medical Cert)',personal:'Personal Leave',comp:'Compensatory Leave',maternity:'Maternity Leave',special:'Special Leave',dayoff:'Day Off Exchange',sick:'Sick Leave'};
+  const users=getAllUsers();
+  const getEmpId=uid=>{const idx=users.findIndex(u=>u._key===uid);return idx>=0?String(idx+1).padStart(5,'0'):'00000';};
+  const headers=['EmpID','EmpName','LeaveCode','LeaveDesc','StartDate','EndDate','Days','Remark'];
+  const rows=approved.map(h=>[getEmpId(h.userId),h.employee,tC[h.type]||h.type,tN[h.type]||h.label,pd(h.from),pd(h.to),h.days,h.note||'']);
+  dlFile('\uFEFF'+[headers,...rows].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n'),'text/csv',`TigerSoft_Leave_${stamp()}.csv`);
+}
+function dlFile(content,type,filename){
+  const blob=new Blob([content],{type:`${type};charset=utf-8`});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=filename;a.click();
+  URL.revokeObjectURL(url);
+}
+function stamp(){const n=new Date();return`${n.getFullYear()}${String(n.getMonth()+1).padStart(2,'0')}${String(n.getDate()).padStart(2,'0')}`;}
+
+initDB();
 </script>
 </body>
 </html>
