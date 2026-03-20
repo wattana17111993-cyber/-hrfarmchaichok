@@ -204,17 +204,17 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
           <div style="display:flex;gap:10px">
             <button class="type-btn active" id="period-full" onclick="setPeriod('full',this)" style="flex:1;padding:10px 8px">
               <div style="font-size:18px;margin-bottom:2px">📅</div>
-              <div style="font-size:12px;font-weight:500">เต็มวัน</div>
+              <div class="period-label" style="font-size:12px;font-weight:500">เต็มวัน</div>
             </button>
             <button class="type-btn" id="period-am" onclick="setPeriod('am',this)" style="flex:1;padding:10px 8px">
               <div style="font-size:18px;margin-bottom:2px">🌅</div>
-              <div style="font-size:12px;font-weight:500">ครึ่งวันเช้า</div>
-              <div style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
+              <div class="period-label" style="font-size:12px;font-weight:500">ครึ่งวันเช้า</div>
+              <div class="period-sub" style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
             </button>
             <button class="type-btn" id="period-pm" onclick="setPeriod('pm',this)" style="flex:1;padding:10px 8px">
               <div style="font-size:18px;margin-bottom:2px">🌇</div>
-              <div style="font-size:12px;font-weight:500">ครึ่งวันบ่าย</div>
-              <div style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
+              <div class="period-label" style="font-size:12px;font-weight:500">ครึ่งวันบ่าย</div>
+              <div class="period-sub" style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
             </button>
           </div>
         </div>
@@ -344,8 +344,15 @@ let selectedType = '';
 
 function setPeriod(p, btn){
   selectedPeriod = p;
-  ['period-full','period-am','period-pm'].forEach(id => $( id).classList.remove('active'));
+  ['period-full','period-am','period-pm'].forEach(id => $(id).classList.remove('active'));
   btn.classList.add('active');
+  // อัปเดตสีตัวหนังสือในปุ่มที่เลือก
+  ['period-full','period-am','period-pm'].forEach(id => {
+    const isActive = $(id).classList.contains('active');
+    $(id).querySelectorAll('.period-label,.period-sub').forEach(el => {
+      el.style.color = isActive ? '#fff' : '';
+    });
+  });
   // ครึ่งวัน = วันเดียว ไม่ต้องเลือกวันสิ้นสุด
   if(p === 'full'){
     $('f-to-wrap').style.display = '';
