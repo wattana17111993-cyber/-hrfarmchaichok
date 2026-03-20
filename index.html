@@ -503,7 +503,10 @@ function refreshViews(){
 
 // ── Init ──────────────────────────────────
 async function initDB(){
-  // seed default admin if users node empty
+  // restore session
+  const saved = loadSession();
+
+  // seed default users if empty
   const snap=await db.ref('users').once('value');
   if(!snap.val()){
     const defaults=[
@@ -517,6 +520,7 @@ async function initDB(){
     defaults.forEach(u=>{const k=db.ref('users').push().key;updates[k]=u;});
     await db.ref('users').update(updates);
   }
+
   // seed quota
   const qSnap=await db.ref('quota').once('value');
   const qExist=qSnap.val()||{};
@@ -530,7 +534,17 @@ async function initDB(){
     }
   });
   if(Object.keys(qUpdates).length>0) await db.ref('quota').update(qUpdates);
+
   hide('db-loading');
+
+  // restore session if valid
+  if(saved && saved._key){
+    const userSnap = await db.ref(`users/${saved._key}`).once('value');
+    if(userSnap.val()){
+      enterApp({...userSnap.val(), _key: saved._key});
+      return;
+    }
+  }
   show('login-page');
 }
 
@@ -558,8 +572,19 @@ async function doLogin(){
 function showErr(m){$('login-error-text').textContent=m;show('login-error');}
 function hideErr(){hide('login-error');}
 
+function saveSession(user){
+  try{ localStorage.setItem('leaveOS_user', JSON.stringify(user)); }catch(e){}
+}
+function loadSession(){
+  try{ return JSON.parse(localStorage.getItem('leaveOS_user')||'null'); }catch(e){ return null; }
+}
+function clearSession(){
+  try{ localStorage.removeItem('leaveOS_user'); }catch(e){}
+}
+
 function enterApp(user){
   currentUser=user;
+  saveSession(user);
   hide('login-page');show('app-page');
   $('hdr-avatar').textContent=user.avatar||user.name[0];
   $('hdr-avatar').style.background=user.color||'#1a1a1a';
