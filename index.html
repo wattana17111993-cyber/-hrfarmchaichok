@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farm Chokchai – ระบบใบลาออนไลน์</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#f7f7f5;min-height:100vh}
+button,input,textarea,select{font-family:inherit}
+.hidden{display:none!important}
+
+header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}
+.header-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:28px;height:28px;background:#1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+.logo-text{font-weight:600;font-size:15px;color:#1a1a1a}
+.role-badge{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600}
+.badge-admin{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+.badge-manager{background:#fdf4ff;color:#7e22ce;border:1px solid #e9d5ff}
+.header-right{display:flex;align-items:center;gap:12px}
+.avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600}
+.dept-tag{font-size:11px;padding:2px 8px;border-radius:12px;background:#f3f3f3;color:#666;font-weight:500}
+.btn-logout{padding:6px 14px;border-radius:8px;border:1.5px solid #e8e8e8;background:#fff;color:#888;font-size:12px;font-weight:500;cursor:pointer}
+.btn-logout:hover{background:#f5f5f5}
+
+.container{max-width:960px;margin:0 auto;padding:32px 24px}
+.tabs{display:inline-flex;background:#ebebeb;border-radius:10px;padding:3px;margin-bottom:28px}
+.tab-btn{padding:7px 20px;border-radius:8px;border:none;font-size:13px;font-weight:500;background:transparent;color:#888;cursor:pointer;transition:.15s}
+.tab-btn.active{background:#fff;color:#1a1a1a;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.card{background:#fff;border-radius:14px;padding:20px 18px;border:1px solid #eee}
+.progress-track{height:4px;background:#f0f0f0;border-radius:4px;margin-top:12px}
+.progress-bar{height:100%;border-radius:4px;background:#1a1a1a}
+
+.table-card{background:#fff;border-radius:14px;border:1px solid #eee;overflow:hidden}
+.table-header{padding:18px 22px;border-bottom:1px solid #f3f3f3;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.row{padding:14px 22px;border-bottom:1px solid #f6f6f6;display:flex;align-items:center;gap:14px}
+.row:last-child{border-bottom:none}
+.row-icon{width:38px;height:38px;border-radius:10px;background:#f7f7f5;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.row-info{flex:1;min-width:0}
+.row-title{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
+.row-sub{font-size:12px;color:#aaa}
+.empty{padding:40px;text-align:center;color:#bbb;font-size:13px}
+
+.badge{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500;white-space:nowrap}
+.b-approved{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
+.b-pending{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
+.b-rejected{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.b-vacation{background:#fffbeb;color:#92400e}
+.b-sick{background:#fef2f2;color:#991b1b}
+.b-personal{background:#eff6ff;color:#1e40af}
+
+.form-card{background:#fff;border-radius:16px;border:1px solid #eee;padding:28px 26px;max-width:520px}
+.form-card h2{margin:0 0 22px;font-size:16px;font-weight:600;color:#1a1a1a}
+.field-label{display:block;font-size:11px;font-weight:600;color:#999;margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px}
+.field-input{width:100%;padding:10px 12px;border:1.5px solid #e8e8e8;border-radius:10px;font-size:13px;outline:none;background:#fafafa;color:#1a1a1a}
+.field-input:focus{border-color:#aaa}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.type-btns{display:flex;gap:10px;margin-bottom:20px}
+.type-btn{flex:1;padding:12px 8px;border-radius:12px;border:1.5px solid #e8e8e8;background:#fff;text-align:center;cursor:pointer;transition:.15s}
+.type-btn.active{border-color:#1a1a1a;background:#1a1a1a}
+.type-btn .t-icon{font-size:20px;margin-bottom:4px}
+.type-btn .t-name{font-size:12px;font-weight:500;color:#555}
+.type-btn.active .t-name{color:#fff}
+.type-btn .t-rem{font-size:11px;color:#bbb;margin-top:2px}
+.type-btn.active .t-rem{color:#aaa}
+.btn-primary{width:100%;padding:13px;border-radius:11px;border:none;font-size:14px;font-weight:600;cursor:pointer;background:#1a1a1a;color:#fff;transition:.2s}
+.btn-primary:disabled{background:#e8e8e8;color:#bbb;cursor:not-allowed}
+.success-msg{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px;color:#166534;font-weight:500;max-width:520px}
+
+.subtabs{display:inline-flex;background:#f3f3f3;border-radius:8px;padding:3px}
+.subtab{padding:6px 14px;border-radius:6px;border:none;font-size:12px;font-weight:500;background:transparent;color:#888;cursor:pointer}
+.subtab.active{background:#fff;color:#1a1a1a;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.search-input{padding:8px 12px;border:1.5px solid #e8e8e8;border-radius:8px;font-size:13px;outline:none;width:200px;background:#fafafa}
+.search-input:focus{border-color:#aaa}
+.btn-approve{padding:7px 14px;border-radius:8px;border:none;background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;cursor:pointer}
+.btn-approve:hover{opacity:.85}
+.btn-reject-sm{padding:7px 14px;border-radius:8px;border:1.5px solid #fecaca;background:#fff;color:#991b1b;font-size:12px;font-weight:600;cursor:pointer}
+.btn-reject-sm:hover{background:#fef2f2}
+
+/* Login */
+#login-page{min-height:100vh;background:#f7f7f5;display:flex;align-items:center;justify-content:center;padding:24px}
+.login-wrap{width:100%;max-width:400px}
+.login-logo{text-align:center;margin-bottom:32px}
+.login-logo-icon{width:52px;height:52px;background:#1a1a1a;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;color:#fff}
+.login-logo h1{font-size:24px;font-weight:700;color:#1a1a1a;margin-bottom:6px}
+.login-logo p{font-size:13px;color:#999}
+.login-card{background:#fff;border-radius:20px;border:1px solid #eee;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,.06);margin-bottom:16px}
+.login-card h2{margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a1a}
+.login-field{margin-bottom:16px}
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:44px}
+.pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:16px;color:#aaa;cursor:pointer;padding:0}
+.error-msg{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#991b1b;display:flex;align-items:center;gap:8px}
+.btn-login{width:100%;padding:13px;border-radius:11px;border:none;background:#1a1a1a;color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+.btn-login:hover{opacity:.85}
+.btn-login:disabled{background:#aaa;cursor:not-allowed}
+.demo-card{background:#fff;border-radius:14px;border:1px solid #eee;padding:16px 20px}
+.demo-title{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.demo-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#f7f7f5;border-radius:8px;cursor:pointer;margin-bottom:6px;transition:.15s}
+.demo-row:hover{background:#efefed}
+.demo-row:last-child{margin-bottom:0}
+.demo-role{font-size:12px;color:#555;font-weight:500}
+.demo-cred{font-size:12px;color:#aaa;font-family:monospace}
+.demo-hint{font-size:11px;color:#ccc;text-align:center;margin-top:10px}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:100}
+.modal{background:#fff;border-radius:16px;padding:28px;width:400px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h3{margin:0 0 8px;font-size:16px;font-weight:600;color:#1a1a1a}
+.modal p{margin:0 0 18px;font-size:13px;color:#777}
+.modal-actions{display:flex;gap:10px}
+.btn-cancel{flex:1;padding:11px;border-radius:10px;border:1.5px solid #e8e8e8;background:#fff;color:#555;font-size:13px;font-weight:500;cursor:pointer}
+.btn-confirm-reject{flex:1;padding:11px;border-radius:10px;border:none;background:#991b1b;color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+
+/* dept pill */
+.dept-pill{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div id="login-page">
+  <div class="login-wrap">
+    <div class="login-logo">
+      <img src="https://i.postimg.cc/zvbJ7q7t/327576218-909440623391186-5000088745039117611-n.jpg" alt="Farm Chokchai Logo" style="width:120px;height:120px;object-fit:contain;margin:0 auto 14px;display:block">
+      <h1 style="font-size:22px;font-weight:800;color:#7b1a1a">Farm Chokchai Group</h1>
+      <p>ระบบใบลาออนไลน์ — ยื่น ติดตาม และอนุมัติใบลาได้ทุกที่ทุกเวลา</p>
+    </div>
+    <div class="login-card">
+      <h2>เข้าสู่ระบบ</h2>
+      <div class="login-field">
+        <label class="field-label">ชื่อผู้ใช้</label>
+        <input id="inp-user" class="field-input" placeholder="กรอกชื่อผู้ใช้" autocomplete="username">
+      </div>
+      <div class="login-field">
+        <label class="field-label">รหัสผ่าน</label>
+        <div class="pw-wrap">
+          <input id="inp-pw" class="field-input" type="password" placeholder="กรอกรหัสผ่าน">
+          <button class="pw-toggle" onclick="togglePw()">👁️</button>
+        </div>
+      </div>
+      <div id="login-error" class="error-msg hidden"><span>⚠️</span><span id="login-error-text"></span></div>
+      <button id="btn-login" class="btn-login" onclick="doLogin()">เข้าสู่ระบบ →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- App -->
+<div id="app-page" class="hidden">
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <img src="https://i.postimg.cc/zvbJ7q7t/327576218-909440623391186-5000088745039117611-n.jpg" alt="Farm Chokchai" style="width:36px;height:36px;object-fit:contain;border-radius:6px">
+        <span class="logo-text" style="color:#7b1a1a">Farm Chokchai</span>
+        <span id="hdr-role-badge" class="role-badge hidden"></span>
+      </div>
+      <div class="header-right">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div id="hdr-avatar" class="avatar"></div>
+          <div>
+            <div id="hdr-name" style="font-size:13px;color:#555;font-weight:500"></div>
+            <div id="hdr-dept" style="font-size:11px;color:#aaa"></div>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="doLogout()">ออกจากระบบ</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="view-employee" class="container hidden">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="empTab('dashboard',this)">📊 ภาพรวม</button>
+      <button class="tab-btn" onclick="empTab('request',this)">✏️ ยื่นคำขอลา</button>
+    </div>
+    <div id="emp-dashboard">
+      <div class="grid3" id="quota-grid"></div>
+      <div class="table-card">
+        <div class="table-header">
+          <span style="font-weight:600;font-size:14px;color:#1a1a1a">ประวัติการลาของฉัน</span>
+          <span id="my-history-count" style="font-size:12px;color:#aaa"></span>
+        </div>
+        <div id="my-history-list"></div>
+      </div>
+    </div>
+    <div id="emp-request" class="hidden">
+      <div id="emp-success" class="success-msg hidden">✅ ส่งคำขอลาเรียบร้อยแล้ว รออนุมัติจากหัวหน้าฝ่าย</div>
+      <div class="form-card">
+        <h2>ยื่นคำขอลา</h2>
+        <label class="field-label">ประเภทการลา</label>
+        <div class="type-btns" id="type-btns"></div>
+        <div class="grid2">
+          <div><label class="field-label">วันที่เริ่มต้น</label><input type="date" id="f-from" class="field-input"></div>
+          <div id="f-to-wrap"><label class="field-label">วันที่สิ้นสุด</label><input type="date" id="f-to" class="field-input"></div>
+        </div>
+        <div style="margin-bottom:18px">
+          <label class="field-label">ช่วงเวลา</label>
+          <div style="display:flex;gap:10px">
+            <button class="type-btn active" id="period-full" onclick="setPeriod('full',this)" style="flex:1;padding:10px 8px">
+              <div style="font-size:18px;margin-bottom:2px">📅</div>
+              <div style="font-size:12px;font-weight:500">เต็มวัน</div>
+            </button>
+            <button class="type-btn" id="period-am" onclick="setPeriod('am',this)" style="flex:1;padding:10px 8px">
+              <div style="font-size:18px;margin-bottom:2px">🌅</div>
+              <div style="font-size:12px;font-weight:500">ครึ่งวันเช้า</div>
+              <div style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
+            </button>
+            <button class="type-btn" id="period-pm" onclick="setPeriod('pm',this)" style="flex:1;padding:10px 8px">
+              <div style="font-size:18px;margin-bottom:2px">🌇</div>
+              <div style="font-size:12px;font-weight:500">ครึ่งวันบ่าย</div>
+              <div style="font-size:11px;color:#bbb;margin-top:2px">0.5 วัน</div>
+            </button>
+          </div>
+        </div>
+        <div style="margin-bottom:24px">
+          <label class="field-label">หมายเหตุ (ถ้ามี)</label>
+          <textarea id="f-note" class="field-input" rows="3" placeholder="ระบุเหตุผลหรือรายละเอียด..." style="resize:none"></textarea>
+        </div>
+        <button id="btn-submit-leave" class="btn-primary" onclick="submitLeave()">ส่งคำขอลา →</button>
+      </div>
+      <p style="font-size:11px;color:#bbb;text-align:center;margin-top:14px;max-width:520px">คำขอจะถูกส่งให้หัวหน้าฝ่ายของคุณพิจารณาทันที</p>
+    </div>
+  </div>
+
+  <div id="view-manager" class="container hidden">
+    <div class="grid3" id="mgr-stats"></div>
+    <div class="table-card">
+      <div class="table-header">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-weight:600;font-size:14px;color:#1a1a1a" id="mgr-title"></span>
+          <div class="subtabs">
+            <button class="subtab active" onclick="mgrTab('pending',this)">รออนุมัติ</button>
+            <button class="subtab" onclick="mgrTab('approved',this)">อนุมัติแล้ว</button>
+            <button class="subtab" onclick="mgrTab('rejected',this)">ไม่อนุมัติ</button>
+            <button class="subtab" onclick="mgrTab('all',this)">ทั้งหมด</button>
+          </div>
+        </div>
+        <input class="search-input" id="mgr-search" placeholder="🔍 ค้นหา..." oninput="renderManager()">
+      </div>
+      <div id="mgr-list"></div>
+    </div>
+  </div>
+
+  <div id="view-admin" class="container hidden">
+    <div class="grid3" id="admin-stats"></div>
+    <div class="table-card">
+      <div class="table-header">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-weight:600;font-size:14px;color:#1a1a1a">คำขอลาทั้งหมด (ทุกฝ่าย)</span>
+          <div class="subtabs">
+            <button class="subtab active" onclick="adminTab('pending',this)">รออนุมัติ</button>
+            <button class="subtab" onclick="adminTab('approved',this)">อนุมัติแล้ว</button>
+            <button class="subtab" onclick="adminTab('rejected',this)">ไม่อนุมัติ</button>
+            <button class="subtab" onclick="adminTab('all',this)">ทั้งหมด</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input class="search-input" id="admin-search" placeholder="🔍 ค้นหา..." oninput="renderAdmin()">
+          <button onclick="exportExcel()" style="padding:8px 14px;border-radius:8px;border:1.5px solid #d1fae5;background:#f0fdf4;color:#166534;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">⬇️ Export Excel</button>
+          <button onclick="exportTigerSoft()" style="padding:8px 14px;border-radius:8px;border:1.5px solid #ddd6fe;background:#f5f3ff;color:#5b21b6;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">🐯 Export TigerSoft</button>
+        </div>
+      </div>
+      <div id="admin-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="reject-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <h3>ยืนยันการปฏิเสธ</h3>
+    <p>กรุณาระบุเหตุผล (ถ้ามี)</p>
+    <textarea id="reject-note" class="field-input" rows="3" placeholder="เหตุผล..." style="resize:none;margin-bottom:16px"></textarea>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">ยกเลิก</button>
+      <button class="btn-confirm-reject" onclick="confirmReject()">ยืนยันปฏิเสธ</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Master Data ───────────────────────────────────────
+const DEPTS = {
+  it:  {label:'ฝ่าย IT',      color:'#1e40af', bg:'#eff6ff', border:'#bfdbfe'},
+  hr:  {label:'ฝ่าย HR',      color:'#166534', bg:'#f0fdf4', border:'#bbf7d0'},
+  fin: {label:'ฝ่ายการเงิน', color:'#92400e', bg:'#fffbeb', border:'#fde68a'},
+};
+
+const USERS = [
+  {id:1,  username:'emp_it1',  password:'1234',  name:'สมชาย ใจดี',    role:'employee', dept:'it',  avatar:'ส', color:'#1a1a1a'},
+  {id:2,  username:'emp_it2',  password:'1234',  name:'วิชัย ตั้งใจ',  role:'employee', dept:'it',  avatar:'ว', color:'#1a1a1a'},
+  {id:3,  username:'emp_hr1',  password:'1234',  name:'สมหญิง รักงาน', role:'employee', dept:'hr',  avatar:'ห', color:'#1a1a1a'},
+  {id:4,  username:'emp_fin1', password:'1234',  name:'มานี มีสุข',    role:'employee', dept:'fin', avatar:'ม', color:'#1a1a1a'},
+  {id:5,  username:'mgr_it',   password:'1234',  name:'ผู้จัดการ IT',   role:'manager',  dept:'it',  avatar:'จ', color:'#1e40af'},
+  {id:6,  username:'mgr_hr',   password:'1234',  name:'ผู้จัดการ HR',   role:'manager',  dept:'hr',  avatar:'จ', color:'#166534'},
+  {id:7,  username:'mgr_fin',  password:'1234',  name:'ผู้จัดการการเงิน',role:'manager', dept:'fin', avatar:'จ', color:'#92400e'},
+  {id:8,  username:'admin',    password:'admin', name:'ผู้ดูแลระบบ',   role:'admin',    dept:null,  avatar:'ผ', color:'#4f46e5'},
+];
+
+const TYPES = [
+  {id:'sick_cert', label:'ลาป่วย (มีใบรับรองแพทย์)', icon:'🏥', code:'SC'},
+  {id:'personal',  label:'ลากิจ',                     icon:'📋', code:'P'},
+  {id:'comp',      label:'ลาชดเชย',                   icon:'🔄', code:'C'},
+  {id:'maternity', label:'ลาคลอด',                    icon:'🤱', code:'M'},
+  {id:'special',   label:'ลากิจพิเศษ',                icon:'⭐', code:'SP'},
+  {id:'dayoff',    label:'เปลี่ยนวันหยุด',            icon:'📅', code:'DO'},
+  {id:'sick',      label:'ลาป่วย',                    icon:'🤒', code:'S'},
+];
+
+// quota per user
+const QUOTA = {};
+USERS.filter(u=>u.role==='employee').forEach(u=>{
+  QUOTA[u.id] = {
+    sick_cert:{used:0,total:30},
+    personal: {used:0,total:3},
+    comp:     {used:0,total:0},
+    maternity:{used:0,total:90},
+    special:  {used:0,total:3},
+    dayoff:   {used:0,total:0},
+    sick:     {used:0,total:30},
+  };
+});
+QUOTA[1].sick.used=1; QUOTA[2].personal.used=1;
+
+let history = [
+  {id:1,userId:1,employee:'สมชาย ใจดี',  dept:'it', type:'sick_cert',label:'ลาป่วย (มีใบรับรองแพทย์)',from:'1 มี.ค. 2568', to:'3 มี.ค. 2568', days:3,status:'approved',note:'',              submitted:'25 ก.พ. 2568'},
+  {id:2,userId:2,employee:'วิชัย ตั้งใจ', dept:'it', type:'sick',    label:'ลาป่วย',                  from:'15 ก.พ. 2568',to:'15 ก.พ. 2568',days:1,status:'pending', note:'ไข้หวัด',       submitted:'15 ก.พ. 2568'},
+  {id:3,userId:3,employee:'สมหญิง รักงาน',dept:'hr', type:'personal',label:'ลากิจ',                   from:'20 ม.ค. 2568',to:'20 ม.ค. 2568',days:1,status:'pending', note:'ธุระส่วนตัว',  submitted:'18 ม.ค. 2568'},
+  {id:4,userId:4,employee:'มานี มีสุข',   dept:'fin',type:'dayoff',  label:'เปลี่ยนวันหยุด',          from:'5 ม.ค. 2568', to:'6 ม.ค. 2568', days:2,status:'rejected',note:'',              submitted:'2 ม.ค. 2568'},
+  {id:5,userId:1,employee:'สมชาย ใจดี',  dept:'it', type:'comp',    label:'ลาชดเชย',                  from:'10 มี.ค. 2568',to:'11 มี.ค. 2568',days:2,status:'pending',note:'',             submitted:'10 มี.ค. 2568'},
+];
+let nextId = 6;
+
+// ── State ─────────────────────────────────────────────
+let currentUser = null;
+let selectedPeriod = 'full';
+let selectedType = '';
+
+function setPeriod(p, btn){
+  selectedPeriod = p;
+  ['period-full','period-am','period-pm'].forEach(id => $( id).classList.remove('active'));
+  btn.classList.add('active');
+  // ครึ่งวัน = วันเดียว ไม่ต้องเลือกวันสิ้นสุด
+  if(p === 'full'){
+    $('f-to-wrap').style.display = '';
+  } else {
+    $('f-to-wrap').style.display = 'none';
+    $('f-to').value = $('f-from').value;
+  }
+  $('f-to').value = selectedPeriod !== 'full' ? $('f-from').value : $('f-to').value;
+  updateSubmitBtn();
+}
+
+
+let mgrTabState = 'pending';
+let adminTabState = 'pending';
+let rejectTargetId = null;
+let rejectMode = ''; // 'manager' | 'admin'
+
+const $ = id => document.getElementById(id);
+const show = id => $(id).classList.remove('hidden');
+const hide = id => $(id).classList.add('hidden');
+const fmtDate = iso => new Date(iso).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
+
+const statusCfg = {
+  approved:{label:'อนุมัติแล้ว',cls:'b-approved'},
+  pending: {label:'รออนุมัติ',  cls:'b-pending'},
+  rejected:{label:'ไม่อนุมัติ',cls:'b-rejected'},
+};
+  const typeCls = {sick_cert:'b-sick',personal:'b-personal',comp:'b-personal',maternity:'b-approved',special:'b-pending',dayoff:'b-pending',sick:'b-sick'};
+const typeIcon = t => TYPES.find(x=>x.id===t)?.icon||'';
+
+function deptPill(deptId){
+  if(!deptId) return '';
+  const d = DEPTS[deptId];
+  return `<span class="dept-pill" style="color:${d.color};background:${d.bg};border-color:${d.border}">${d.label}</span>`;
+}
+function statusBadge(s){ const c=statusCfg[s]; return `<span class="badge ${c.cls}">${c.label}</span>`; }
+function typeBadge(t,d){ return `<span class="badge ${typeCls[t]}" style="font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500">${d} วัน</span>`; }
+
+// ── Demo list ─────────────────────────────────────────
+function buildDemoList(){}
+
+// ── Login ─────────────────────────────────────────────
+function togglePw(){ const i=$('inp-pw'); i.type=i.type==='password'?'text':'password'; }
+function fillDemo(u,p){ $('inp-user').value=u; $('inp-pw').value=p; }
+$('inp-user').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+$('inp-pw').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+
+function doLogin(){
+  const u=$('inp-user').value.trim(), p=$('inp-pw').value;
+  if(!u||!p){ showErr('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน'); return; }
+  const btn=$('btn-login'); btn.disabled=true; btn.textContent='กำลังเข้าสู่ระบบ...';
+  setTimeout(()=>{
+    const user=USERS.find(x=>x.username===u&&x.password===p);
+    if(user){ hideErr(); enterApp(user); }
+    else{ showErr('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'); btn.disabled=false; btn.textContent='เข้าสู่ระบบ →'; }
+  },500);
+}
+function showErr(m){ $('login-error-text').textContent=m; show('login-error'); }
+function hideErr(){ hide('login-error'); }
+
+function enterApp(user){
+  currentUser=user;
+  hide('login-page'); show('app-page');
+  $('hdr-avatar').textContent=user.avatar;
+  $('hdr-avatar').style.background=user.color;
+  $('hdr-name').textContent=user.name;
+  $('hdr-dept').textContent=user.dept ? DEPTS[user.dept].label : '';
+
+  const rb=$('hdr-role-badge');
+  rb.classList.remove('hidden','badge-admin','badge-manager');
+  if(user.role==='admin'){ rb.textContent='Admin'; rb.classList.add('badge-admin'); }
+  else if(user.role==='manager'){ rb.textContent='Manager'; rb.classList.add('badge-manager'); }
+  else rb.classList.add('hidden');
+
+  hide('view-employee'); hide('view-manager'); hide('view-admin');
+  if(user.role==='employee'){ show('view-employee'); renderEmployee(); }
+  else if(user.role==='manager'){ show('view-manager'); renderManager(); }
+  else { show('view-admin'); renderAdmin(); }
+}
+
+function doLogout(){
+  currentUser=null; selectedType='';
+  hide('app-page'); show('login-page');
+  $('inp-user').value=''; $('inp-pw').value='';
+  $('btn-login').disabled=false; $('btn-login').textContent='เข้าสู่ระบบ →';
+}
+
+// ── Employee ──────────────────────────────────────────
+function empTab(tab,btn){
+  document.querySelectorAll('#view-employee .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  tab==='dashboard'?(show('emp-dashboard'),hide('emp-request')):(hide('emp-dashboard'),show('emp-request'));
+}
+
+function renderEmployee(){
+  const q=QUOTA[currentUser.id];
+  $('quota-grid').innerHTML=TYPES.map(t=>{
+    const qv=q[t.id], pct=Math.round(qv.used/qv.total*100);
+    return `<div class="card">
+      <div style="font-size:22px;margin-bottom:10px">${t.icon}</div>
+      <div style="font-size:12px;color:#888;margin-bottom:4px">${t.label}</div>
+      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:12px">
+        <span style="font-size:28px;font-weight:700;color:#1a1a1a">${qv.used}</span>
+        <span style="font-size:12px;color:#bbb">/ ${qv.total} วัน</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+
+  const mine=history.filter(h=>h.userId===currentUser.id);
+  $('my-history-count').textContent=mine.length+' รายการ';
+  $('my-history-list').innerHTML=mine.length?mine.map((item,i)=>`
+    <div class="row" style="${i===mine.length-1?'border-bottom:none':''}">
+      <div class="row-icon">${typeIcon(item.type)}</div>
+      <div class="row-info">
+        <div class="row-title"><strong style="font-size:13px;font-weight:500;color:#1a1a1a">${item.label}</strong>${typeBadge(item.type,item.days)}</div>
+        <div class="row-sub">${item.from}${item.days>1?' — '+item.to:''}${item.note?' · '+item.note:''}</div>
+      </div>
+      ${statusBadge(item.status)}
+    </div>`).join(''):'<div class="empty">ยังไม่มีประวัติการลา</div>';
+
+  renderTypeButtons();
+  updateSubmitBtn();
+}
+
+function renderTypeButtons(){
+  const q=QUOTA[currentUser.id];
+  $('type-btns').innerHTML=TYPES.map(t=>`
+    <button class="type-btn${selectedType===t.id?' active':''}" onclick="selectType('${t.id}')">
+      <div class="t-icon">${t.icon}</div>
+      <div class="t-name">${t.label}</div>
+      <div class="t-rem">เหลือ ${q[t.id].total-q[t.id].used} วัน</div>
+    </button>`).join('');
+}
+function selectType(id){ selectedType=id; renderTypeButtons(); updateSubmitBtn(); }
+function updateSubmitBtn(){ $('btn-submit-leave').disabled=!selectedType||!$('f-from').value||!$('f-to').value; }
+$('f-from').addEventListener('change',updateSubmitBtn);
+$('f-to').addEventListener('change',updateSubmitBtn);
+
+function submitLeave(){
+  const from=$('f-from').value, to=$('f-to').value, note=$('f-note').value;
+  if(!selectedType||!from||!to) return;
+  const isHalf = selectedPeriod !== 'full';
+  const days = isHalf ? 0.5 : Math.max(1, Math.round((new Date(to) - new Date(from)) / 86400000) + 1);
+  const periodLabel = selectedPeriod === 'am' ? ' (ครึ่งวันเช้า)' : selectedPeriod === 'pm' ? ' (ครึ่งวันบ่าย)' : '';
+  history.unshift({
+    id:nextId++, userId:currentUser.id, employee:currentUser.name,
+    dept:currentUser.dept, type:selectedType,
+    label:TYPES.find(t=>t.id===selectedType).label,
+    from:fmtDate(from), to:isHalf ? fmtDate(from) : fmtDate(to), days,
+    note: periodLabel + (note ? ' ' + note : ''),
+    status:'pending', submitted:fmtDate(new Date().toISOString().slice(0,10))
+  });
+  selectedType=''; selectedPeriod='full';
+  $('f-from').value=''; $('f-to').value=''; $('f-note').value='';
+  $('f-to-wrap').style.display='';
+  ['period-full','period-am','period-pm'].forEach(id=>$(id).classList.remove('active'));
+  $('period-full').classList.add('active');
+  renderTypeButtons(); updateSubmitBtn();
+  show('emp-success'); setTimeout(()=>hide('emp-success'),3000);
+  renderEmployee();
+}
+
+// ── Manager ───────────────────────────────────────────
+function mgrTab(tab,btn){
+  mgrTabState=tab;
+  document.querySelectorAll('#view-manager .subtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderManager();
+}
+
+function renderManager(){
+  const dept=currentUser.dept;
+  const deptHistory=history.filter(h=>h.dept===dept);
+  const pending=deptHistory.filter(h=>h.status==='pending').length;
+  const approved=deptHistory.filter(h=>h.status==='approved').length;
+  const rejected=deptHistory.filter(h=>h.status==='rejected').length;
+
+  $('mgr-title').textContent='คำขอลา — '+DEPTS[dept].label;
+  document.querySelectorAll('#view-manager .subtab')[0].textContent=`รออนุมัติ${pending>0?' ('+pending+')':''}`;
+
+  $('mgr-stats').innerHTML=[
+    ['รออนุมัติ',pending,'#92400e','#fffbeb','#fde68a'],
+    ['อนุมัติแล้ว',approved,'#166534','#f0fdf4','#bbf7d0'],
+    ['ไม่อนุมัติ',rejected,'#991b1b','#fef2f2','#fecaca'],
+  ].map(([l,v,c,bg,b])=>`<div class="card" style="background:${bg};border-color:${b}">
+    <div style="font-size:12px;color:${c};font-weight:500;margin-bottom:6px">${l}</div>
+    <div style="font-size:32px;font-weight:700;color:${c}">${v}</div>
+    <div style="font-size:11px;color:${c};opacity:.7">รายการ</div>
+  </div>`).join('');
+
+  const search=($('mgr-search')||{value:''}).value||'';
+  const filtered=deptHistory.filter(h=>(mgrTabState==='all'||h.status===mgrTabState)&&(h.employee.includes(search)||h.label.includes(search)));
+
+  $('mgr-list').innerHTML=filtered.length?filtered.map((item,i)=>`
+    <div class="row" style="${i===filtered.length-1?'border-bottom:none':''}">
+      <div class="row-icon">${typeIcon(item.type)}</div>
+      <div class="row-info">
+        <div class="row-title">
+          <strong style="font-size:13px;font-weight:600;color:#1a1a1a">${item.employee}</strong>
+          <span style="font-size:12px;color:#888">·</span>
+          <span style="font-size:13px;color:#444">${item.label}</span>
+          ${typeBadge(item.type,item.days)}
+        </div>
+        <div class="row-sub">${item.from}${item.days>1?' — '+item.to:''}${item.note?' · '+item.note:''}
+          <span style="margin-left:8px;color:#ccc">ยื่นเมื่อ ${item.submitted}</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        ${item.status==='pending'
+          ?`<button class="btn-approve" onclick="approveItem(${item.id},'manager')">อนุมัติ ✓</button>
+             <button class="btn-reject-sm" onclick="openReject(${item.id},'manager')">ปฏิเสธ ✕</button>`
+          :statusBadge(item.status)}
+      </div>
+    </div>`).join(''):'<div class="empty">ไม่พบรายการ</div>';
+}
+
+// ── Admin ─────────────────────────────────────────────
+function adminTab(tab,btn){
+  adminTabState=tab;
+  document.querySelectorAll('#view-admin .subtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdmin();
+}
+
+function renderAdmin(){
+  const pending=history.filter(h=>h.status==='pending').length;
+  const approved=history.filter(h=>h.status==='approved').length;
+  const rejected=history.filter(h=>h.status==='rejected').length;
+
+  document.querySelectorAll('#view-admin .subtab')[0].textContent=`รออนุมัติ${pending>0?' ('+pending+')':''}`;
+
+  $('admin-stats').innerHTML=[
+    ['รออนุมัติ',pending,'#92400e','#fffbeb','#fde68a'],
+    ['อนุมัติแล้ว',approved,'#166634','#f0fdf4','#bbf7d0'],
+    ['ไม่อนุมัติ',rejected,'#991b1b','#fef2f2','#fecaca'],
+  ].map(([l,v,c,bg,b])=>`<div class="card" style="background:${bg};border-color:${b}">
+    <div style="font-size:12px;color:${c};font-weight:500;margin-bottom:6px">${l}</div>
+    <div style="font-size:32px;font-weight:700;color:${c}">${v}</div>
+    <div style="font-size:11px;color:${c};opacity:.7">รายการ</div>
+  </div>`).join('');
+
+  const search=($('admin-search')||{value:''}).value||'';
+  const filtered=history.filter(h=>(adminTabState==='all'||h.status===adminTabState)&&(h.employee.includes(search)||h.label.includes(search)||DEPTS[h.dept]?.label.includes(search)));
+
+  $('admin-list').innerHTML=filtered.length?filtered.map((item,i)=>`
+    <div class="row" style="${i===filtered.length-1?'border-bottom:none':''}">
+      <div class="row-icon">${typeIcon(item.type)}</div>
+      <div class="row-info">
+        <div class="row-title">
+          <strong style="font-size:13px;font-weight:600;color:#1a1a1a">${item.employee}</strong>
+          ${deptPill(item.dept)}
+          <span style="font-size:13px;color:#444">${item.label}</span>
+          ${typeBadge(item.type,item.days)}
+        </div>
+        <div class="row-sub">${item.from}${item.days>1?' — '+item.to:''}${item.note?' · '+item.note:''}
+          <span style="margin-left:8px;color:#ccc">ยื่นเมื่อ ${item.submitted}</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        ${item.status==='pending'
+          ?`<button class="btn-approve" onclick="approveItem(${item.id},'admin')">อนุมัติ ✓</button>
+             <button class="btn-reject-sm" onclick="openReject(${item.id},'admin')">ปฏิเสธ ✕</button>`
+          :statusBadge(item.status)}
+      </div>
+    </div>`).join(''):'<div class="empty">ไม่พบรายการ</div>';
+}
+
+// ── Approve / Reject ──────────────────────────────────
+function approveItem(id, mode){
+  const item=history.find(h=>h.id===id);
+  if(item && QUOTA[item.userId]){
+    QUOTA[item.userId][item.type].used += item.days;
+  }
+  history=history.map(h=>h.id===id?{...h,status:'approved'}:h);
+  mode==='manager'?renderManager():renderAdmin();
+}
+
+function openReject(id,mode){ rejectTargetId=id; rejectMode=mode; $('reject-note').value=''; show('reject-modal'); }
+function closeModal(){ hide('reject-modal'); rejectTargetId=null; }
+function confirmReject(){
+  history=history.map(h=>h.id===rejectTargetId?{...h,status:'rejected'}:h);
+  closeModal();
+  rejectMode==='manager'?renderManager():renderAdmin();
+}
+
+// ── Export TigerSoft Time Attendance ─────────────────
+function exportTigerSoft(){
+  const typeCode = { sick_cert:'SC', personal:'P', comp:'C', maternity:'M', special:'SP', dayoff:'DO', sick:'S' };
+  const typeName = { sick_cert:'Sick Leave (Medical Cert)', personal:'Personal Leave', comp:'Compensatory Leave', maternity:'Maternity Leave', special:'Special Leave', dayoff:'Day Off Exchange', sick:'Sick Leave' };
+
+  // กรองเฉพาะที่อนุมัติแล้ว
+  const approved = history.filter(h => h.status === 'approved');
+
+  if(!approved.length){
+    alert('ไม่มีรายการที่อนุมัติแล้ว');
+    return;
+  }
+
+  // แปลงวันที่ภาษาไทย → DD/MM/YYYY
+  const thMonths = {'ม.ค.':'01','ก.พ.':'02','มี.ค.':'03','เม.ย.':'04','พ.ค.':'05','มิ.ย.':'06','ก.ค.':'07','ส.ค.':'08','ก.ย.':'09','ต.ค.':'10','พ.ย.':'11','ธ.ค.':'12'};
+  function parseThaiDate(str){
+    const parts = str.trim().split(' ');
+    if(parts.length < 3) return str;
+    const d = parts[0].padStart(2,'0');
+    const m = thMonths[parts[1]] || '01';
+    const y = String(parseInt(parts[2]) - 543).padStart(4,'0');
+    return `${d}/${m}/${y}`;
+  }
+
+  // หา employee ID จาก USERS
+  const getEmpId = (userId) => {
+    const u = USERS.find(x => x.id === userId);
+    return u ? String(u.id).padStart(5,'0') : '00000';
+  };
+
+  const bom = '\uFEFF';
+  // Header row ตาม TigerSoft Time Attendance import format
+  const headers = ['EmpID','EmpName','LeaveCode','LeaveDesc','StartDate','EndDate','Days','Remark'];
+
+  const rows = approved.map(h => [
+    getEmpId(h.userId),
+    h.employee,
+    typeCode[h.type] || h.type,
+    typeName[h.type] || h.label,
+    parseThaiDate(h.from),
+    parseThaiDate(h.to),
+    h.days,
+    h.note ? h.note.replace(/\(ครึ่งวัน.*?\)/,'').trim() : '',
+  ]);
+
+  const csv = bom + [headers, ...rows]
+    .map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(','))
+    .join('\r\n');
+
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const now = new Date();
+  const stamp = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+  a.download = `TigerSoft_Leave_${stamp}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+
+function exportExcel(){
+  const search=($('admin-search')||{value:''}).value||'';
+  const filtered=history.filter(h=>(adminTabState==='all'||h.status===adminTabState)&&(h.employee.includes(search)||h.label.includes(search)||DEPTS[h.dept]?.label.includes(search)));
+
+  const statusLabel={approved:'อนุมัติแล้ว',pending:'รออนุมัติ',rejected:'ไม่อนุมัติ'};
+  const headers=['ชื่อพนักงาน','ฝ่าย','ประเภทการลา','วันที่เริ่มต้น','วันที่สิ้นสุด','จำนวนวัน','สถานะ','หมายเหตุ','วันที่ยื่น'];
+
+  const rows=filtered.map(h=>[
+    h.employee,
+    DEPTS[h.dept]?.label||'',
+    h.label,
+    h.from,
+    h.to,
+    h.days,
+    statusLabel[h.status]||h.status,
+    h.note||'',
+    h.submitted,
+  ]);
+
+  // Build CSV with BOM for Thai UTF-8
+  const bom='\uFEFF';
+  const csv=bom+[headers,...rows].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  const now=new Date();
+  const stamp=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+  a.download=`LeaveOS_${stamp}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── Init ──────────────────────────────────────────────
+buildDemoList();
+</script>
+</body>
+</html>
