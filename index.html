@@ -113,9 +113,7 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
     </div>
     <div class="login-card">
       <h2>เข้าสู่ระบบ</h2>
-      <div style="margin-bottom:18px">
-       
-      </div>
+
       <div class="login-field"><label class="field-label">ชื่อผู้ใช้</label><input id="inp-user" class="field-input" placeholder="กรอกชื่อผู้ใช้"></div>
       <div class="login-field"><label class="field-label">รหัสผ่าน</label>
         <div class="pw-wrap"><input id="inp-pw" class="field-input" type="password" placeholder="กรอกรหัสผ่าน"><button class="pw-toggle" onclick="togglePw()">👁️</button></div>
@@ -187,8 +185,10 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
             <button id="btn-year-68" onclick="selectHolidayYear(2568)" style="flex:1;padding:9px;border-radius:10px;border:1.5px solid #1a1a1a;background:#1a1a1a;color:#fff;font-size:13px;font-weight:600;cursor:pointer">ปี 2568</button>
             <button id="btn-year-69" onclick="selectHolidayYear(2569)" style="flex:1;padding:9px;border-radius:10px;border:1.5px solid #e8e8e8;background:#fff;color:#555;font-size:13px;font-weight:600;cursor:pointer">ปี 2569</button>
           </div>
-          <label class="field-label">วันหยุดนักขัตฤกษ์</label>
-          <select id="f-comp-holiday" class="field-input" onchange="updateSubmitBtn()"><option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option></select>
+          <label class="field-label">วันหยุดนักขัตฤกษ์ (เลือกได้หลายวัน)</label>
+          <select id="f-comp-holiday" class="field-input" multiple size="5" onchange="updateSubmitBtn()" style="height:auto;padding:4px">
+          </select>
+          <div id="comp-selected-count" style="font-size:11px;color:#888;margin-top:6px"></div>
         </div>
         <div style="margin-bottom:16px">
           <label class="field-label">ช่วงเวลา</label>
@@ -829,6 +829,11 @@ function selectHolidayYear(year) {
   buildHolidayDropdown(year); updateSubmitBtn();
 }
 
+function getCompSelected() {
+  var sel=$('f-comp-holiday'); if(!sel) return [];
+  return sel.value ? [sel.value] : [];
+}
+
 function buildHolidayDropdown(year) {
   var sel=$('f-comp-holiday'); if(!sel) return;
   var list=year===2569?H2569:H2568;
@@ -840,6 +845,7 @@ function buildHolidayDropdown(year) {
     opt.textContent=h.name+' — '+h.day+' '+parseInt(p[2])+' '+MONTHS[parseInt(p[1])]+' '+year;
     sel.appendChild(opt);
   });
+  updateCompCount();
 }
 
 async function submitLeave() {
@@ -852,7 +858,7 @@ async function submitLeave() {
   if(isDayoff&&!dayoffDate) return;
   if(isComp&&!compVal) return;
   var isHalf=!isDayoff&&!isComp&&selectedPeriod!=='full';
-  var days=isDayoff||isComp?1:isHalf?0.5:Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
+  var days=isDayoff?1:isComp?compVal.split('|').length:isHalf?0.5:Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
   var pLabel=selectedPeriod==='am'?' (ครึ่งวันเช้า)':selectedPeriod==='pm'?' (ครึ่งวันบ่าย)':'';
   var noteText='';
   if(isDayoff) noteText='ทำงานแทน '+fmtDate(from)+' → หยุด '+fmtDate(dayoffDate)+(note?' · '+note:'');
@@ -869,7 +875,9 @@ async function submitLeave() {
   // reset form
   selectedType=''; selectedPeriod='full';
   ['f-from','f-to','f-note','f-dayoff'].forEach(function(id){ var e=$(id); if(e) e.value=''; });
-  var ch=$('f-comp-holiday'); if(ch) ch.value='';
+  var ch=$('f-comp-holiday');
+  if(ch){ ch.value=''; }
+  updateCompCount();
   var tw=$('f-to-wrap'); if(tw) tw.style.display='';
   var lf=$('label-from'); if(lf) lf.textContent='วันที่เริ่มต้น';
   ['dayoff-extra','comp-extra'].forEach(function(id){ var e=$(id); if(e) e.classList.add('hidden'); });
