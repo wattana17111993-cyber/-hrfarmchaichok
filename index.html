@@ -195,9 +195,13 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
         <h2>ยื่นคำขอลา</h2>
       <label class="field-label">ประเภทการลา</label>
       <div id="type-btns" style="margin-bottom:20px"></div>
-        <div class="grid2">
-          <div><label class="field-label">วันที่เริ่มต้น</label><input type="date" id="f-from" class="field-input"></div>
-          <div id="f-to-wrap"><label class="field-label">วันที่สิ้นสุด</label><input type="date" id="f-to" class="field-input"></div>
+        <div class="grid2" id="date-fields">
+          <div><label class="field-label" id="label-from">วันที่เริ่มต้น</label><input type="date" id="f-from" class="field-input"></div>
+          <div id="f-to-wrap"><label class="field-label" id="label-to">วันที่สิ้นสุด</label><input type="date" id="f-to" class="field-input"></div>
+        </div>
+        <div id="dayoff-extra" class="hidden" style="margin-bottom:18px">
+          <label class="field-label">วันที่ขอหยุด</label>
+          <input type="date" id="f-dayoff" class="field-input">
         </div>
         <div style="margin-bottom:18px">
           <label class="field-label">ช่วงเวลา</label>
@@ -512,28 +516,68 @@ function renderTypeButtons(){
       <div class="t-rem">เหลือ ${q[t.id].total-q[t.id].used} วัน</div>
     </button>`).join('');
 }
-function selectType(id){ selectedType=id; renderTypeButtons(); updateSubmitBtn(); }
-function updateSubmitBtn(){ $('btn-submit-leave').disabled=!selectedType||!$('f-from').value||!$('f-to').value; }
+function selectType(id){
+  selectedType=id;
+  renderTypeButtons();
+  const toWrap=$('f-to-wrap');
+  const labelFrom=$('label-from');
+  const dayoffExtra=$('dayoff-extra');
+  if(!toWrap||!labelFrom||!dayoffExtra) return;
+  if(id==='dayoff'){
+    labelFrom.textContent='วันที่ทำงานแทน';
+    toWrap.style.display='none';
+    dayoffExtra.classList.remove('hidden');
+    $('f-to').value='';
+  } else {
+    labelFrom.textContent='วันที่เริ่มต้น';
+    toWrap.style.display='';
+    dayoffExtra.classList.add('hidden');
+    if($('f-dayoff')) $('f-dayoff').value='';
+  }
+  updateSubmitBtn();
+}
+function updateSubmitBtn(){
+  const el=$('btn-submit-leave');
+  if(!el) return;
+  const from=$('f-from')?$('f-from').value:'';
+  const to=$('f-to')?$('f-to').value:'';
+  const dayoff=$('f-dayoff')?$('f-dayoff').value:'';
+  if(selectedType==='dayoff'){
+    el.disabled=!selectedType||!from||!dayoff;
+  } else {
+    el.disabled=!selectedType||!from||(!to&&selectedPeriod==='full');
+  }
+}
 $('f-from').addEventListener('change',updateSubmitBtn);
 $('f-to').addEventListener('change',updateSubmitBtn);
 
 function submitLeave(){
   const from=$('f-from').value, to=$('f-to').value, note=$('f-note').value;
-  if(!selectedType||!from||!to) return;
-  const isHalf = selectedPeriod !== 'full';
-  const days = isHalf ? 0.5 : Math.max(1, Math.round((new Date(to) - new Date(from)) / 86400000) + 1);
-  const periodLabel = selectedPeriod === 'am' ? ' (ครึ่งวันเช้า)' : selectedPeriod === 'pm' ? ' (ครึ่งวันบ่าย)' : '';
+  const isDayoff = selectedType==='dayoff';
+  const dayoffDate = isDayoff ? $('f-dayoff').value : null;
+  if(!selectedType||!from) return;
+  if(!isDayoff && selectedPeriod==='full' && !to) return;
+  if(isDayoff && !dayoffDate) return;
+  const isHalf = !isDayoff && selectedPeriod !== 'full';
+  const days = isDayoff ? 1 : isHalf ? 0.5 : Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
+  const periodLabel = selectedPeriod==='am'?' (ครึ่งวันเช้า)':selectedPeriod==='pm'?' (ครึ่งวันบ่าย)':'';
+  const noteText = isDayoff
+    ? `ทำงานแทนวันที่ ${fmtDate(from)} → หยุดวันที่ ${fmtDate(dayoffDate)}${note?' · '+note:''}`
+    : periodLabel+(note?' '+note:'');
   history.unshift({
     id:nextId++, userId:currentUser.id, employee:currentUser.name,
     dept:currentUser.dept, type:selectedType,
     label:TYPES.find(t=>t.id===selectedType).label,
-    from:fmtDate(from), to:isHalf ? fmtDate(from) : fmtDate(to), days,
-    note: periodLabel + (note ? ' ' + note : ''),
+    from: fmtDate(from),
+    to: isDayoff ? fmtDate(dayoffDate) : isHalf ? fmtDate(from) : fmtDate(to),
+    days, note: noteText,
     status:'pending', submitted:fmtDate(new Date().toISOString().slice(0,10))
   });
   selectedType=''; selectedPeriod='full';
-  $('f-from').value=''; $('f-to').value=''; $('f-note').value='';
+  $('f-from').value=''; $('f-to').value=''; $('f-note').value=''; $('f-dayoff').value='';
   $('f-to-wrap').style.display='';
+  $('label-from').textContent='วันที่เริ่มต้น';
+  hide('dayoff-extra');
   ['period-full','period-am','period-pm'].forEach(id=>$(id).classList.remove('active'));
   $('period-full').classList.add('active');
   renderTypeButtons(); updateSubmitBtn();
