@@ -674,8 +674,10 @@ function hideLoginErr() { hide('login-error'); }
 function enterApp(user) {
   currentUser = user;
   saveSession(user);
-  hide('login-page');
-  show('app-page');
+
+  // ซ่อน login ก่อนเสมอ
+  var lp=$('login-page'); if(lp){ lp.style.display='none'; lp.classList.add('hidden'); }
+  var ap=$('app-page'); if(ap){ ap.style.display=''; ap.classList.remove('hidden'); }
   // Header
   $('hdr-avatar').textContent = user.avatar||user.name[0];
   $('hdr-avatar').style.background = user.color||'#1a1a1a';
@@ -803,7 +805,11 @@ function selectType(id) {
     var ft=$('f-to'); if(ft) ft.value='';
   } else if(id==='comp') {
     lf.textContent='วันที่ขอลาชดเชย'; tw.style.display='none';
-    if(de) de.classList.add('hidden'); if(ce) ce.classList.remove('hidden');
+    if(de) de.classList.add('hidden');
+    if(ce) {
+      ce.classList.remove('hidden');
+      buildHolidayDropdown(selectedHolidayYear);
+    }
     var ft2=$('f-to'); if(ft2) ft2.value='';
   } else {
     lf.textContent='วันที่เริ่มต้น'; tw.style.display='';
@@ -852,17 +858,25 @@ function getCompSelected() {
 }
 
 function buildHolidayDropdown(year) {
-  var sel=$('f-comp-holiday'); if(!sel) return;
-  var list=year===2569?H2569:H2568;
-  sel.innerHTML='<option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option>';
+  var sel = $('f-comp-holiday');
+  if(!sel) return;
+  // สร้าง select ใหม่ทั้งหมดเพื่อไม่ให้ค้าง attribute multiple
+  var newSel = document.createElement('select');
+  newSel.id = 'f-comp-holiday';
+  newSel.className = 'field-input';
+  newSel.onchange = updateSubmitBtn;
+  var list = year===2569 ? H2569 : H2568;
+  var def = document.createElement('option');
+  def.value = ''; def.textContent = '-- เลือกวันหยุดนักขัตฤกษ์ --';
+  newSel.appendChild(def);
   list.forEach(function(h){
-    var p=h.date.split('-');
-    var opt=document.createElement('option');
-    opt.value=h.date+'|'+h.day+'|'+h.name;
-    opt.textContent=h.name+' — '+h.day+' '+parseInt(p[2])+' '+MONTHS[parseInt(p[1])]+' '+year;
-    sel.appendChild(opt);
+    var p = h.date.split('-');
+    var opt = document.createElement('option');
+    opt.value = h.date+'|'+h.day+'|'+h.name;
+    opt.textContent = h.name+' — '+h.day+' '+parseInt(p[2])+' '+MONTHS[parseInt(p[1])]+' '+year;
+    newSel.appendChild(opt);
   });
-  updateCompCount();
+  sel.parentNode.replaceChild(newSel, sel);
 }
 
 async function submitLeave() {
