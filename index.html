@@ -613,7 +613,11 @@ async function initDB() {
     // restore session
     if(saved&&saved._key) {
       var uSnap2 = await db.ref('users/'+saved._key).once('value');
-      if(uSnap2.val()) { enterApp(Object.assign({},uSnap2.val(),{_key:saved._key})); return; }
+      if(uSnap2.val()) {
+        var restoredUser = Object.assign({},uSnap2.val(),{_key:saved._key});
+        enterApp(restoredUser);
+        return;
+      }
     }
     show('login-page');
   } catch(err) {
@@ -668,18 +672,21 @@ function showLoginErr(m) { $('login-error-text').textContent=m; show('login-erro
 function hideLoginErr() { hide('login-error'); }
 
 function enterApp(user) {
-  currentUser = user; saveSession(user);
-  hide('login-page'); show('app-page');
+  currentUser = user;
+  saveSession(user);
+  hide('login-page');
+  show('app-page');
+  // Header
   $('hdr-avatar').textContent = user.avatar||user.name[0];
   $('hdr-avatar').style.background = user.color||'#1a1a1a';
   $('hdr-name').textContent = user.name;
   var brEl=$('hdr-branch');
-  if(brEl) brEl.textContent = user.branch==='FARM'?'🐄 Farm':'🏢 HO';
+  if(brEl) brEl.textContent = user.branch==='HO'?'🏢 HO':'🐄 Farm';
   var deptTxt = user.dept?((DEPTS[user.dept]&&DEPTS[user.dept].label)||''):(user.position||'');
   var startTxt = '';
-  if(user.startDate) {
+  if(user.startDate){
     var sd=new Date(user.startDate);
-    startTxt = ' · เริ่มงาน '+sd.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
+    startTxt=' · เริ่มงาน '+sd.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
   }
   $('hdr-dept').textContent = deptTxt+startTxt;
   $('hdr-tenure').textContent = user.startDate?('อายุงาน '+calcTenure(user.startDate)):'';
@@ -687,10 +694,20 @@ function enterApp(user) {
   if(user.role==='admin'){rb.textContent='Admin';rb.classList.add('badge-admin');rb.classList.remove('hidden');}
   else if(user.role==='manager'){rb.textContent='Manager';rb.classList.add('badge-manager');rb.classList.remove('hidden');}
   else rb.classList.add('hidden');
+  // Show correct view
   hide('view-employee'); hide('view-manager'); hide('view-admin');
-  if(user.role==='employee') { show('view-employee'); show('emp-dashboard'); hide('emp-request'); }
-  else if(user.role==='manager') { show('view-manager'); }
-  else { show('view-admin'); }
+  if(user.role==='employee'){
+    show('view-employee');
+    show('emp-dashboard');
+    hide('emp-request');
+  } else if(user.role==='manager'){
+    show('view-manager');
+  } else {
+    show('view-admin');
+    show('admin-leaves');
+    hide('admin-employees');
+  }
+  // Start realtime listeners (will trigger renderX automatically)
   startListeners();
   buildHolidayDropdown(2568);
 }
