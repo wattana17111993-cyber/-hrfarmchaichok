@@ -195,6 +195,17 @@ header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-inde
           <div><label class="field-label" id="label-from">วันที่เริ่มต้น</label><input type="date" id="f-from" class="field-input"></div>
           <div id="f-to-wrap"><label class="field-label">วันที่สิ้นสุด</label><input type="date" id="f-to" class="field-input"></div>
         </div>
+        <div id="comp-extra" class="hidden" style="margin-bottom:16px">
+          <label class="field-label">เลือกปี</label>
+          <div style="display:flex;gap:10px;margin-bottom:12px">
+            <button id="btn-year-68" onclick="selectHolidayYear(2568,this)" style="flex:1;padding:9px;border-radius:10px;border:1.5px solid #1a1a1a;background:#1a1a1a;color:#fff;font-size:13px;font-weight:600;cursor:pointer">ปี 2568</button>
+            <button id="btn-year-69" onclick="selectHolidayYear(2569,this)" style="flex:1;padding:9px;border-radius:10px;border:1.5px solid #e8e8e8;background:#fff;color:#555;font-size:13px;font-weight:600;cursor:pointer">ปี 2569</button>
+          </div>
+          <label class="field-label">วันหยุดนักขัตฤกษ์</label>
+          <select id="f-comp-holiday" class="field-input" onchange="updateSubmitBtn()">
+            <option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option>
+          </select>
+        </div>
         <div id="dayoff-extra" class="hidden" style="margin-bottom:16px">
           <label class="field-label">วันที่ขอหยุด</label>
           <input type="date" id="f-dayoff" class="field-input">
@@ -310,7 +321,52 @@ const FIREBASE_CONFIG = {
 firebase.initializeApp(FIREBASE_CONFIG);
 const db = firebase.database();
 
-// ── Master Data ───────────────────────────
+// ── วันหยุดนักขัตฤกษ์ 2568 ───────────────
+const HOLIDAYS_2568 = [
+  {date:'2568-01-01', day:'พุธ',      name:'วันขึ้นปีใหม่'},
+  {date:'2568-02-12', day:'พุธ',      name:'วันมาฆบูชา'},
+  {date:'2568-04-06', day:'อาทิตย์',  name:'วันจักรี'},
+  {date:'2568-04-13', day:'อาทิตย์',  name:'วันสงกรานต์'},
+  {date:'2568-04-14', day:'จันทร์',   name:'วันสงกรานต์'},
+  {date:'2568-04-15', day:'อังคาร',   name:'วันสงกรานต์'},
+  {date:'2568-05-01', day:'พฤหัสบดี', name:'วันแรงงานแห่งชาติ'},
+  {date:'2568-05-04', day:'อาทิตย์',  name:'วันฉัตรมงคล'},
+  {date:'2568-05-11', day:'อาทิตย์',  name:'วันวิสาขบูชา'},
+  {date:'2568-06-02', day:'จันทร์',   name:'ตาม มติ ครม.'},
+  {date:'2568-06-03', day:'อังคาร',   name:'วันเฉลิมพระชนมพรรษาราชินี ร.10'},
+  {date:'2568-07-10', day:'พฤหัสบดี', name:'วันอาสาฬหบูชา'},
+  {date:'2568-07-28', day:'จันทร์',   name:'วันเฉลิมพระชนมพรรษา ร.10'},
+  {date:'2568-08-11', day:'จันทร์',   name:'ตาม มติ ครม.'},
+  {date:'2568-08-12', day:'อังคาร',   name:'วันแม่แห่งชาติ'},
+  {date:'2568-10-13', day:'จันทร์',   name:'วันนวมินทรมหาราช'},
+  {date:'2568-10-23', day:'พฤหัสบดี', name:'วันปิยมหาราช'},
+  {date:'2568-12-05', day:'ศุกร์',    name:'วันชาติและวันพ่อแห่งชาติ'},
+  {date:'2568-12-10', day:'พุธ',      name:'วันรัฐธรรมนูญ'},
+  {date:'2568-12-31', day:'พุธ',      name:'วันสิ้นปี'},
+];
+
+const HOLIDAYS_2569 = [
+  {date:'2569-01-01', day:'พฤหัสบดี', name:'วันขึ้นปีใหม่'},
+  {date:'2569-01-02', day:'ศุกร์',    name:'วันหยุดตามมติ ครม.'},
+  {date:'2569-03-03', day:'อังคาร',   name:'วันมาฆบูชา'},
+  {date:'2569-04-06', day:'จันทร์',   name:'วันจักรี'},
+  {date:'2569-04-13', day:'จันทร์',   name:'วันสงกรานต์'},
+  {date:'2569-04-14', day:'อังคาร',   name:'วันสงกรานต์'},
+  {date:'2569-04-15', day:'พุธ',      name:'วันสงกรานต์'},
+  {date:'2569-05-01', day:'ศุกร์',    name:'วันแรงงานแห่งชาติ'},
+  {date:'2569-05-04', day:'จันทร์',   name:'วันฉัตรมงคล'},
+  {date:'2569-05-31', day:'อาทิตย์',  name:'วันวิสาขบูชา'},
+  {date:'2569-06-03', day:'พุธ',      name:'วันเฉลิมพระชนมพรรษาราชินี'},
+  {date:'2569-07-28', day:'อังคาร',   name:'วันเฉลิมพระชนมพรรษา ร.10'},
+  {date:'2569-07-29', day:'พุธ',      name:'วันอาสาฬหบูชา'},
+  {date:'2569-08-12', day:'พุธ',      name:'วันแม่แห่งชาติ'},
+  {date:'2569-10-13', day:'อังคาร',   name:'วันนวมินทรมหาราช'},
+  {date:'2569-10-23', day:'ศุกร์',    name:'วันปิยมหาราช'},
+  {date:'2569-12-05', day:'เสาร์',    name:'วันชาติและวันพ่อแห่งชาติ'},
+  {date:'2569-12-10', day:'พฤหัสบดี', name:'วันรัฐธรรมนูญ'},
+  {date:'2569-12-31', day:'พฤหัสบดี', name:'วันสิ้นปี'},
+];
+
 const DEPTS = {
   it:  {label:'ฝ่าย IT',      color:'#1e40af',bg:'#eff6ff',border:'#bfdbfe'},
   hr:  {label:'ฝ่าย HR',      color:'#166534',bg:'#f0fdf4',border:'#bbf7d0'},
@@ -399,13 +455,24 @@ function getUserQuota(userId){
 
 // ── Init Firebase data ────────────────────
 async function initDB(){
-  // seed quota for employees if not exist
   const snap = await db.ref('quota').once('value');
-  if(!snap.val()){
-    const updates = {};
-    USERS.filter(u=>u.role==='employee').forEach(u=>{
+  const existing = snap.val() || {};
+  const updates = {};
+  USERS.filter(u=>u.role==='employee').forEach(u=>{
+    if(!existing[u.id]){
+      // ยังไม่มี quota → สร้างใหม่
       updates[u.id] = JSON.parse(JSON.stringify(DEFAULT_QUOTA));
-    });
+    } else {
+      // มีอยู่แล้ว → แค่ update total ของ comp เป็น 20 ถ้ายังไม่ถึง
+      if(!existing[u.id].comp || existing[u.id].comp.total !== 20){
+        updates[`${u.id}/comp`] = {
+          used: existing[u.id]?.comp?.used || 0,
+          total: 20
+        };
+      }
+    }
+  });
+  if(Object.keys(updates).length > 0){
     await db.ref('quota').update(updates);
   }
   hide('db-loading');
@@ -524,16 +591,26 @@ function selectType(id){
   selectedType=id; renderTypeButtons();
   const toWrap=$('f-to-wrap'), labelFrom=$('label-from'), dayoffExtra=$('dayoff-extra');
   if(!toWrap||!labelFrom||!dayoffExtra) return;
+  const compExtra=$('comp-extra');
   if(id==='dayoff'){
     labelFrom.textContent='วันที่ทำงานแทน';
     toWrap.style.display='none';
     dayoffExtra.classList.remove('hidden');
+    compExtra && compExtra.classList.add('hidden');
+    $('f-to').value='';
+  } else if(id==='comp'){
+    labelFrom.textContent='วันที่ขอลาชดเชย';
+    toWrap.style.display='none';
+    dayoffExtra.classList.add('hidden');
+    compExtra && compExtra.classList.remove('hidden');
     $('f-to').value='';
   } else {
     labelFrom.textContent='วันที่เริ่มต้น';
     toWrap.style.display='';
     dayoffExtra.classList.add('hidden');
+    compExtra && compExtra.classList.add('hidden');
     if($('f-dayoff')) $('f-dayoff').value='';
+  if($('f-comp-holiday')) $('f-comp-holiday').value='';
   }
   updateSubmitBtn();
 }
@@ -543,7 +620,9 @@ function updateSubmitBtn(){
   const from=$('f-from')?$('f-from').value:'';
   const to=$('f-to')?$('f-to').value:'';
   const dayoff=$('f-dayoff')?$('f-dayoff').value:'';
+  const comp=$('f-comp-holiday')?$('f-comp-holiday').value:'';
   if(selectedType==='dayoff') el.disabled=!from||!dayoff;
+  else if(selectedType==='comp') el.disabled=!from||!comp;
   else el.disabled=!selectedType||!from||(selectedPeriod==='full'&&!to);
 }
 $('f-from').addEventListener('change',updateSubmitBtn);
@@ -566,23 +645,36 @@ function setPeriod(p,btn){
 
 async function submitLeave(){
   const from=$('f-from').value, to=$('f-to').value, note=$('f-note').value;
+  const isComp = selectedType==='comp';
+  const compVal = isComp && $('f-comp-holiday') ? $('f-comp-holiday').value : '';
+  if(isComp && (!from||!compVal)) return;
+
   const isDayoff=selectedType==='dayoff';
   const dayoffDate=isDayoff?$('f-dayoff').value:null;
   if(!selectedType||!from) return;
-  if(!isDayoff&&selectedPeriod==='full'&&!to) return;
+  if(!isDayoff&&!isComp&&selectedPeriod==='full'&&!to) return;
   if(isDayoff&&!dayoffDate) return;
 
-  const isHalf=!isDayoff&&selectedPeriod!=='full';
-  const days=isDayoff?1:isHalf?0.5:Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
+  const isHalf=!isDayoff&&!isComp&&selectedPeriod!=='full';
+  const days=isDayoff||isComp?1:isHalf?0.5:Math.max(1,Math.round((new Date(to)-new Date(from))/86400000)+1);
   const periodLabel=selectedPeriod==='am'?' (ครึ่งวันเช้า)':selectedPeriod==='pm'?' (ครึ่งวันบ่าย)':'';
-  const noteText=isDayoff
-    ?`ทำงานแทนวันที่ ${fmtDate(from)} → หยุดวันที่ ${fmtDate(dayoffDate)}${note?' · '+note:''}`
-    :periodLabel+(note?' '+note:'');
+
+  let noteText='';
+  if(isDayoff){
+    noteText=`ทำงานแทนวันที่ ${fmtDate(from)} → หยุดวันที่ ${fmtDate(dayoffDate)}${note?' · '+note:''}`;
+  } else if(isComp){
+    const [hDate,hDay,hName]=compVal.split('|');
+    noteText=`ชดเชยวันหยุด: ${hName} (${hDay} ${fmtDate(hDate)})${note?' · '+note:''}`;
+  } else {
+    noteText=periodLabel+(note?' '+note:'');
+  }
+
+  const toDate = isDayoff?fmtDate(dayoffDate):isComp?fmtDate(from):isHalf?fmtDate(from):fmtDate(to);
 
   const newItem={
     userId:currentUser.id, employee:currentUser.name, dept:currentUser.dept,
     type:selectedType, label:TYPES.find(t=>t.id===selectedType).label,
-    from:fmtDate(from), to:isDayoff?fmtDate(dayoffDate):isHalf?fmtDate(from):fmtDate(to),
+    from:fmtDate(from), to:toDate,
     days, note:noteText, status:'pending',
     submitted:fmtDate(new Date().toISOString().slice(0,10)),
     createdAt: Date.now()
@@ -734,8 +826,38 @@ function downloadFile(content,type,filename){
 }
 function stamp(){ const n=new Date(); return `${n.getFullYear()}${String(n.getMonth()+1).padStart(2,'0')}${String(n.getDate()).padStart(2,'0')}`; }
 
-// ── Start ─────────────────────────────────
-initDB();
+// ── Init ─────────────────────────────────
+let selectedHolidayYear = 2568;
+
+function selectHolidayYear(year, btn){
+  selectedHolidayYear = year;
+  $('btn-year-68').style.background = year===2568?'#1a1a1a':'#fff';
+  $('btn-year-68').style.color      = year===2568?'#fff':'#555';
+  $('btn-year-68').style.borderColor= year===2568?'#1a1a1a':'#e8e8e8';
+  $('btn-year-69').style.background = year===2569?'#1a1a1a':'#fff';
+  $('btn-year-69').style.color      = year===2569?'#fff':'#555';
+  $('btn-year-69').style.borderColor= year===2569?'#1a1a1a':'#e8e8e8';
+  buildHolidayDropdown(year);
+  updateSubmitBtn();
+}
+
+function buildHolidayDropdown(year){
+  const sel = $('f-comp-holiday');
+  if(!sel) return;
+  year = year || selectedHolidayYear || 2568;
+  const list = year===2569 ? HOLIDAYS_2569 : HOLIDAYS_2568;
+  const months=['','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  sel.innerHTML='<option value="">-- เลือกวันหยุดนักขัตฤกษ์ --</option>';
+  list.forEach(h=>{
+    const p=h.date.split('-');
+    const opt=document.createElement('option');
+    opt.value=`${h.date}|${h.day}|${h.name}`;
+    opt.textContent=`${h.name} — ${h.day} ${parseInt(p[2])} ${months[parseInt(p[1])]} ${year}`;
+    sel.appendChild(opt);
+  });
+}
+
+initDB().then(()=>buildHolidayDropdown());
 </script>
 </body>
 </html>
