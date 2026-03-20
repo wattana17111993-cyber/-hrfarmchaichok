@@ -715,11 +715,15 @@ function enterApp(user) {
 }
 
 function doLogout() {
-  stopListeners(); clearSession();
+  stopListeners(); 
+  clearSession();
   currentUser=null; selectedType=''; selectedPeriod='full';
-  hide('app-page'); show('login-page');
+  // ซ่อน app แสดง login
+  var ap=$('app-page'); if(ap){ ap.style.display='none'; ap.classList.add('hidden'); }
+  var lp=$('login-page'); if(lp){ lp.style.display=''; lp.classList.remove('hidden'); }
   $('inp-user').value=''; $('inp-pw').value='';
   var btn=$('btn-login'); btn.disabled=false; btn.textContent='เข้าสู่ระบบ →';
+  hide('login-error');
 }
 
 // ── Employee ──────────────────────────────
