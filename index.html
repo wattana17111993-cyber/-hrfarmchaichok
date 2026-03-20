@@ -346,10 +346,9 @@ function setPeriod(p, btn){
   selectedPeriod = p;
   ['period-full','period-am','period-pm'].forEach(id => $(id).classList.remove('active'));
   btn.classList.add('active');
-  // อัปเดตสีตัวหนังสือในปุ่มที่เลือก
   ['period-full','period-am','period-pm'].forEach(id => {
     const isActive = $(id).classList.contains('active');
-    $(id).querySelectorAll('.period-label,.period-sub').forEach(el => {
+    $(id).querySelectorAll('div').forEach(el => {
       el.style.color = isActive ? '#fff' : '';
     });
   });
